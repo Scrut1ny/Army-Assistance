@@ -1,7 +1,7 @@
 #### Personal
   - [iPERMS RMA](https://iperms.hrc.army.mil/)
   - [IPPS-A](https://ipps-a.army.mil/)
-  - [ATCTS](https://atcts.army.mil/)
+  - [Army Training and Certification Tracking System (ATCTS)](https://atcts.army.mil/)
 
 #### Financial
   - [myPay](https://mypay.dfas.mil/)
