@@ -17,5 +17,6 @@
   - [ArmyIgnitED](https://www.armyignited.army.mil/student/)
       - Email ```csmith@intellectualpoint.com``` that you're missing an armyignited account, and can't login with my CAC. Make sure to mention your name and rank etc.
   - [Joint Services Transcript (JST)](https://jst.doded.mil/jst/)
+      - Make sure to utilize your transcript for college credits!
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
 
