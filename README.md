@@ -1,3 +1,8 @@
+#### General
+  - [Outlook](https://webmail.apps.mil/mail/?realm=army.mil)
+  - [AVD](https://aka.ms/AVDGov)
+    - [Azure environments](https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-remote-desktop-client?tabs=web#subscribe-to-a-workspace-and-connect-to-your-desktops-and-applications)
+
 #### Personal
   - [iPERMS RMA](https://iperms.hrc.army.mil/)
   - [IPPS-A](https://ipps-a.army.mil/)
@@ -20,6 +25,12 @@
   - [Joint Services Transcript (JST)](https://jst.doded.mil/jst/)
       - Make sure to utilize your transcript for college credits!
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
+
+#### Training / Learning
+  - []()
+  - []()
+  - []()
+  - []()
 
 #### Cheat Scripts
   - [scripts](https://github.com/Clutch152/scripts)
