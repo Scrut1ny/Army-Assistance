@@ -21,3 +21,5 @@
       - Make sure to utilize your transcript for college credits!
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
 
+#### Cheat Scripts
+  - [scripts](https://github.com/Clutch152/scripts)
