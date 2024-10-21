@@ -27,8 +27,8 @@
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
 
 #### Training / Learning
-  - []()
-  - []()
+  - [jkodirect.jten.mil](https://jkodirect.jten.mil/Atlas2/page/desktop/DesktopHome.jsf)
+  - [cs.signal.army.mil](https://cs.signal.army.mil/UserMngmt/UserPortal.asp)
   - []()
   - []()
 
