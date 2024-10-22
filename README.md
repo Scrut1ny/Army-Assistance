@@ -34,3 +34,29 @@
 
 #### Cheat Scripts
   - [scripts](https://github.com/Clutch152/scripts)
+
+#### Cyber Security Fundamentals (CSF)
+
+<details>
+<summary>Q&A</summary>
+
+| Question | Answer |
+|-|-|
+| Which of the following categories require a privileged access agreement? | IA Technical |
+| What is Website security | The protection of personal and organizational public-facing websites from cyberattacks |
+| An indication is a sign that an incident may never occur | FALSE |
+| Are website defacement and DoS possible cyberattacks against websites | True |
+| Indications of an incident fall into two categories | Indications and precursors |
+| SSID stands for | Service Set Identifier |
+| What is a hash function | A fixed-length string of numbers and letters generated from a mathematical algorithm and an arbitrarily sized message such as an email, document, picture or other type of data. |
+| A security plan is to provide an overview of the security requirements of the system and describe the controls in place or planned for meeting those requirements | TRUE |
+| In accordance with AR 25-2, whose responsibility is it to ensure all users receive initial and annual IA awareness training? | IASO |
+| According to DoD 8570.01-M, the IA technical category consists of how many levels? | I, II, & III |
+| IAW AR 25-2 all new appointed cybersecurity workforce personnel must achieve appropriate qualification requirements within? | 6 months |
+| What is a Distributed Denial-of-Service attack? | It occurs when multiple machines are operating together to attack one target |
+| Cybersecurity is not a holistic program to manage Information Technology related security risk | FALSE |
+| _____________your wireless data prevents anyone who might be able to access your network from viewing it | Encrypting |
+| What is a fake Antivirus | Malicious software designed to steal information form unsuspecting users by mimicking legitimate security software |
+| What are the four objectives of planning for security | Identify , design, test and monitor |
+
+</details>
