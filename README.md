@@ -58,5 +58,10 @@
 | _____________your wireless data prevents anyone who might be able to access your network from viewing it | Encrypting |
 | What is a fake Antivirus | Malicious software designed to steal information form unsuspecting users by mimicking legitimate security software |
 | What are the four objectives of planning for security | Identify , design, test and monitor |
+| Viruses, Worms and Trojan horses are types of malicious code | True |
+| Encryptions is a way to send a message in ____________ | code |
+| Security plans are not living documents | FALSE |
+| What does LAMP stands for | Linux, Apache, My SQL and PHP |
+| A denial-of-service (DoS) attack occurs when legitimate _________ are unable to access ________, ______ or other network resources due to the actions of malicious cyber threat factors | users, Information systems, devices |
 
 </details>
