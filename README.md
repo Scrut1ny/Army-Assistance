@@ -1,5 +1,5 @@
 #### General
-  - [Outlook](https://webmail.apps.mil/mail/?realm=army.mil)
+  - [A365 Sharepoint](https://www.ohome.apps.mil/)
   - [AVD](https://aka.ms/AVDGov)
     - [Azure environments](https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-remote-desktop-client?tabs=web#subscribe-to-a-workspace-and-connect-to-your-desktops-and-applications)
 
