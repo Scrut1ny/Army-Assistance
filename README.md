@@ -41,6 +41,8 @@
 <details>
 <summary>Q&A</summary>
 
+- [CSF Pre-Test](https://cs.signal.army.mil//UserMngmt/CyberFundamentals/lessons/pretest.asp)
+
 | Question | Answer |
 |----------|--------|
 | A Botnet is a term derived from the idea of bot networks In its most basic form, a bot is simply an automated computer program, or robot | True |
