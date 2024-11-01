@@ -42,27 +42,29 @@
 <summary>Q&A</summary>
 
 | Question | Answer |
-|-|-|
-| Which of the following categories require a privileged access agreement? | IA Technical |
-| What is Website security | The protection of personal and organizational public-facing websites from cyberattacks |
+|----------|--------|
+| A Botnet is a term derived from the idea of bot networks In its most basic form, a bot is simply an automated computer program, or robot | True |
+| A denial-of-service (DoS) attack occurs when legitimate _________ are unable to access ________, ______ or other network resources due to the actions of malicious cyber threat factors | users, Information systems, devices |
+| According to DoD 8570.01-M, the IA technical category consists of how many levels? | I, II, & III |
 | An indication is a sign that an incident may never occur | FALSE |
 | Are website defacement and DoS possible cyberattacks against websites | True |
-| Indications of an incident fall into two categories | Indications and precursors |
-| SSID stands for | Service Set Identifier |
-| What is a hash function | A fixed-length string of numbers and letters generated from a mathematical algorithm and an arbitrarily sized message such as an email, document, picture or other type of data. |
-| A security plan is to provide an overview of the security requirements of the system and describe the controls in place or planned for meeting those requirements | TRUE |
-| In accordance with AR 25-2, whose responsibility is it to ensure all users receive initial and annual IA awareness training? | IASO |
-| According to DoD 8570.01-M, the IA technical category consists of how many levels? | I, II, & III |
-| IAW AR 25-2 all new appointed cybersecurity workforce personnel must achieve appropriate qualification requirements within? | 6 months |
-| What is a Distributed Denial-of-Service attack? | It occurs when multiple machines are operating together to attack one target |
 | Cybersecurity is not a holistic program to manage Information Technology related security risk | FALSE |
-| _____________your wireless data prevents anyone who might be able to access your network from viewing it | Encrypting |
-| What is a fake Antivirus | Malicious software designed to steal information form unsuspecting users by mimicking legitimate security software |
-| What are the four objectives of planning for security | Identify , design, test and monitor |
-| Viruses, Worms and Trojan horses are types of malicious code | True |
 | Encryptions is a way to send a message in ____________ | code |
+| _____________your wireless data prevents anyone who might be able to access your network from viewing it | Encrypting |
+| Individual networks may be affected by DoS attacks without being directly targeted | True |
+| In accordance with AR 25-2, whose responsibility is it to ensure all users receive initial and annual IA awareness training? | IASO |
+| IAW AR 25-2 all new appointed cybersecurity workforce personnel must achieve appropriate qualification requirements within? | 6 months |
+| Indications of an incident fall into two categories | Indications and precursors |
+| Interoperability is a weakness in Cloud Computing | TRUE |
 | Security plans are not living documents | FALSE |
+| SSID stands for | Service Set Identifier |
+| What are the four objectives of planning for security | Identify, design, test and monitor |
 | What does LAMP stands for | Linux, Apache, My SQL and PHP |
-| A denial-of-service (DoS) attack occurs when legitimate _________ are unable to access ________, ______ or other network resources due to the actions of malicious cyber threat factors | users, Information systems, devices |
+| What is a Distributed Denial-of-Service attack? | It occurs when multiple machines are operating together to attack one target |
+| What is a fake Antivirus | Malicious software designed to steal information from unsuspecting users by mimicking legitimate security software |
+| What is a hash function | A fixed-length string of numbers and letters generated from a mathematical algorithm and an arbitrarily sized message such as an email, document, picture or other type of data. |
+| What is Website security | The protection of personal and organizational public-facing websites from cyberattacks |
+| Viruses, Worms and Trojan horses are types of malicious code | True |
+| Which of the following categories require a privileged access agreement? | IA Technical |
 
 </details>
