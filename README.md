@@ -70,3 +70,26 @@
 | Which of the following categories require a privileged access agreement? | IA Technical |
 
 </details>
+
+#### Cyber Awareness
+
+<details>
+<summary>Q&A</summary>
+
+- [CA Pre-Test](https://cs.signal.army.mil/UserMngmt/CyberAwareness_2025/launch.asp)
+
+| Question | Answer |
+|----------|--------|
+| Which of the following is an example of behavior that you should report? |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+
+</details>
