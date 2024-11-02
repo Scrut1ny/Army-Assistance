@@ -33,6 +33,37 @@
   - []()
   - []()
 
+#### Common Acronyms Decoded
+
+<details>
+<summary>List...</summary>
+
+| Acronym | Meaning                                                      |
+|---------|--------------------------------------------------------------|
+| APFU    | Army Physical Fitness Uniform                                |
+| AT      | Annual Training                                              |
+| CPX     | Command Post Exercises                                       |
+| ETS     | Expiration Term of Service (Leave the Army)                 |
+| FTX     | Field Training Exercises                                     |
+| IDT     | Inactive Duty Training                                       |
+| PHA     | Physical Health Assessment                                   |
+| PMT     | Pre Mobilization Training                                    |
+| PT      | Physical Training                                            |
+| RMA     | Risk Management Assessment                                   |
+| RSD     | Regular Scheduled Drill                                      |
+| SRP     | Soldier Readiness Processing (PHA but for pre-deployment)   |
+| WFX     | Warfighter Exercise (Pre-deployment training)               |
+| NCO     | Non-Commissioned Officer                                     |
+| MOS     | Military Occupational Specialty                              |
+| OPSEC   | Operational Security                                         |
+| SOP     | Standard Operating Procedure                                 |
+| TAD     | Temporary Additional Duty                                    |
+| UA      | Unauthorized Absence                                        |
+| VA      | Volunteer Army                                              |
+| XO      | Executive Officer                                           |
+
+</details>
+
 #### Cheat Scripts
   - [scripts](https://github.com/Clutch152/scripts)
 
