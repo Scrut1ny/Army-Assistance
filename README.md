@@ -9,6 +9,7 @@
   - [ID Card Office Online](https://idco-pki.dmdc.osd.mil/idco/myprofile-info)
   - [Army Training and Certification Tracking System (ATCTS)](https://atcts.army.mil/)
   - [MHS Genesis Patient Portal](https://my.mhsgenesis.health.mil/pages/home)
+  - [Servicemembers Civil Relief Act (SCRA)](https://www.militaryonesource.mil/financial-legal/personal-finance/servicemembers-civil-relief-act/)
 
 #### Financial
   - [myPay](https://mypay.dfas.mil/)
