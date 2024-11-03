@@ -81,6 +81,8 @@
 | According to DoD 8570.01-M, the IA technical category consists of how many levels? | I, II, & III |
 | An indication is a sign that an incident may never occur | FALSE |
 | Are website defacement and DoS possible cyberattacks against websites | True |
+| A precursor is a sign that an incident may occur in the future | True |
+| A ________ and _________ are network infrastructure devices | All |
 | Cybersecurity is not a holistic program to manage Information Technology related security risk | FALSE |
 | Encryptions is a way to send a message in ____________ | code |
 | _____________your wireless data prevents anyone who might be able to access your network from viewing it | Encrypting |
@@ -96,9 +98,12 @@
 | What is a Distributed Denial-of-Service attack? | It occurs when multiple machines are operating together to attack one target |
 | What is a fake Antivirus | Malicious software designed to steal information from unsuspecting users by mimicking legitimate security software |
 | What is a hash function | A fixed-length string of numbers and letters generated from a mathematical algorithm and an arbitrarily sized message such as an email, document, picture or other type of data. |
+| What is a Virtual Private Network used for | Allows employees to connect securely to their network when away from the office |
 | What is Website security | The protection of personal and organizational public-facing websites from cyberattacks |
-| Viruses, Worms and Trojan horses are types of malicious code | True |
 | Which of the following categories require a privileged access agreement? | IA Technical |
+| Which of the following certifications would satisfy IAM level II and IAM level III? | CISSP |
+| How often do all cybersecurity workforce personnel take the Cybersecurity Fundamental training IAW DA PAM 25-2-6 | Every 3 years |
+| Viruses, Worms and Trojan horses are types of malicious code | True |
 
 </details>
 
