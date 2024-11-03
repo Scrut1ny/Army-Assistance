@@ -31,8 +31,7 @@
 #### Training / Learning
   - [jkodirect.jten.mil](https://jkodirect.jten.mil/Atlas2/page/desktop/DesktopHome.jsf)
   - [cs.signal.army.mil](https://cs.signal.army.mil/UserMngmt/UserPortal.asp)
-  - []()
-  - []()
+  - [www.lms.army.mil](https://www.lms.army.mil/)
 
 #### Common Acronyms Decoded
 
