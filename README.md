@@ -52,6 +52,7 @@
 | RMA     | Risk Management Assessment                                   |
 | RSD     | Regular Scheduled Drill                                      |
 | SRP     | Soldier Readiness Processing (PHA but for pre-deployment)   |
+| SM      | Service Member(s)                                           |
 | WFX     | Warfighter Exercise (Pre-deployment training)               |
 | NCO     | Non-Commissioned Officer                                     |
 | MOS     | Military Occupational Specialty                              |
