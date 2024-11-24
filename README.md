@@ -94,6 +94,7 @@
 | Interoperability is a weakness in Cloud Computing | TRUE |
 | Security plans are not living documents | FALSE |
 | SSID stands for | Service Set Identifier |
+| What are rootkits | A piece of software that can be installed and hidden on your computer without your knowledge |
 | What are the four objectives of planning for security | Identify, design, test and monitor |
 | What does LAMP stands for | Linux, Apache, My SQL and PHP |
 | What is a Distributed Denial-of-Service attack? | It occurs when multiple machines are operating together to attack one target |
@@ -103,6 +104,7 @@
 | What is Website security | The protection of personal and organizational public-facing websites from cyberattacks |
 | Which of the following categories require a privileged access agreement? | IA Technical |
 | Which of the following certifications would satisfy IAM level II and IAM level III? | CISSP |
+| How can I protect myself against fake antiviruses | All |
 | How often do all cybersecurity workforce personnel take the Cybersecurity Fundamental training IAW DA PAM 25-2-6 | Every 3 years |
 | Viruses, Worms and Trojan horses are types of malicious code | True |
 
