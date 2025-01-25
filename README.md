@@ -114,6 +114,9 @@
 | How can I protect myself against fake antiviruses | All |
 | How often do all cybersecurity workforce personnel take the Cybersecurity Fundamental training IAW DA PAM 25-2-6 | Every 3 years |
 | Viruses, Worms and Trojan horses are types of malicious code | True |
+| What does an Incident Response Plans allows for | A timely and controlled response to security incidents, and attempts to mitigate any damage or lose |
+| What is the current DoD repository for sharing security authorization packages and risk assessment data with Authorizing officials? | Enterprise Mission Assurance Support Service (eMass) |
+| What are the three main cloud computing service models | Software as a Service, platform as a Service and Infrastructure as a Service |
 
 #### POST Request:
 - https://cs.signal.army.mil/UserMngmt/CyberFundamentals/lessons/CsfPretestSubmit.asp
