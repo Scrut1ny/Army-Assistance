@@ -129,6 +129,8 @@
 <details>
 <summary>Q&A</summary>
 
+- [Quizlet - DOD Cyber Awareness Challenge 2025 Knowledge check](https://quizlet.com/959068751/dod-cyber-awareness-challenge-2025-knowledge-check-flash-cards/)
+
 - [CA Pre-Test](https://cs.signal.army.mil/UserMngmt/CyberAwareness_2025/launch.asp)
 
 | Question | Answer |
