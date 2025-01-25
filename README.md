@@ -1,8 +1,13 @@
 #### General
   - [NIPRGPT](https://chat.niprgpt.mil/)
-  - [A365 Sharepoint](https://www.ohome.apps.mil/)
   - [AVD](https://aka.ms/AVDGov)
     - [Azure environments](https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-remote-desktop-client?tabs=web#subscribe-to-a-workspace-and-connect-to-your-desktops-and-applications)
+
+#### A365 Webapps
+  - [Office Home](https://www.ohome.apps.mil/)
+  - [Teams](https://dod.teams.microsoft.us/v2/)
+  - [Outlook](https://webmail.apps.mil/mail/inbox)
+  - [Excel](https://www.ohome.apps.mil/launch/excel?auth=2&username=.mil@army.mil)
 
 #### Personal
   - [iPERMS RMA](https://iperms.hrc.army.mil/)
