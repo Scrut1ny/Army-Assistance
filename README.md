@@ -115,6 +115,10 @@
 | How often do all cybersecurity workforce personnel take the Cybersecurity Fundamental training IAW DA PAM 25-2-6 | Every 3 years |
 | Viruses, Worms and Trojan horses are types of malicious code | True |
 
+#### POST Request:
+- https://cs.signal.army.mil/UserMngmt/CyberFundamentals/lessons/CsfPretestSubmit.asp
+- https://cs.signal.army.mil/UserMngmt/CyberFundamentals/lessons/CsfExam_submit.asp
+
 </details>
 
 #### Cyber Awareness
