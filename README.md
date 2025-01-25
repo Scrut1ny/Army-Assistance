@@ -1,4 +1,5 @@
 #### General
+  - [Army Links](https://armylinks.com/all-links/)
   - [NIPRGPT](https://chat.niprgpt.mil/)
   - [AVD](https://aka.ms/AVDGov)
     - [Azure environments](https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-remote-desktop-client?tabs=web#subscribe-to-a-workspace-and-connect-to-your-desktops-and-applications)
