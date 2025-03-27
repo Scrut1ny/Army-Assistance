@@ -34,6 +34,10 @@
   - [Joint Services Transcript (JST)](https://jst.doded.mil/jst/)
       - Make sure to utilize your transcript for college credits!
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
+---
+  - ASVAB Preperation
+    - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
+    - 
 
 #### Training / Learning
   - [jkodirect.jten.mil](https://jkodirect.jten.mil/Atlas2/page/desktop/DesktopHome.jsf)
