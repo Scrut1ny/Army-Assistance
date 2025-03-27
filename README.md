@@ -35,9 +35,25 @@
       - Make sure to utilize your transcript for college credits!
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
 ---
-  - ASVAB Preperation
-    - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
-    - 
+- ASVAB Preperation
+  - CAT-ASVAB (Online Computer)
+    - 135 Questions
+    - 173 Minutes
+  - P&P-ASVAB (Pen and Paper)
+    - 225 Questions
+    - 149 Minutes
+  - Question Catagories
+    - CL -- Clerical: VE+AR+MK
+    - CO -- Combat: AR+CS+AS+MC
+    - EL -- Electronics: GS+AR+MK+EI
+    - FA -- Field artillery: AR+CS+MK+MC
+    - GM -- General maintenance: GS+AS+MK+EI
+    - GT -- General technical: VE+AR
+    - MM -- Mechanical maintenance: NO+AS+MC+EI
+    - OF -- Operators and food: VE+NO+AS+MC
+    - SC -- Surveillance and communications: VE+AR+AS+MC
+    - ST -- Skilled technical: GS+VE+MK+MC
+  - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
 
 #### Training / Learning
   - [jkodirect.jten.mil](https://jkodirect.jten.mil/Atlas2/page/desktop/DesktopHome.jsf)
