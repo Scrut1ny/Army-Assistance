@@ -56,6 +56,7 @@
   - [ASVAB Scores and Army Jobs](https://www.military.com/join-armed-forces/asvab/asvab-and-army-jobs.html)
   - [ASVAB PRACTICE TEST](https://nationalguard.com/practice-asvab)
   - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
+---
 
 #### Training / Learning
   - [jkodirect.jten.mil](https://jkodirect.jten.mil/Atlas2/page/desktop/DesktopHome.jsf)
