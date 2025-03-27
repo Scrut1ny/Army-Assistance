@@ -35,7 +35,7 @@
       - Make sure to utilize your transcript for college credits!
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
 ---
-- ASVAB Preperation
+- Armed Services Vocational Aptitude Battery (ASVAB) Preperation
   - CAT-ASVAB (Online Computer)
     - 135 Questions
     - 173 Minutes
@@ -53,6 +53,8 @@
     - OF -- Operators and food: VE+NO+AS+MC
     - SC -- Surveillance and communications: VE+AR+AS+MC
     - ST -- Skilled technical: GS+VE+MK+MC
+  - [ASVAB Scores and Army Jobs](https://www.military.com/join-armed-forces/asvab/asvab-and-army-jobs.html)
+  - [ASVAB PRACTICE TEST](https://nationalguard.com/practice-asvab)
   - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
 
 #### Training / Learning
