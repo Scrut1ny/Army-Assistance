@@ -105,12 +105,14 @@
 | ST Score    | 112           | GS + VE + MK + MC                     |
 
 - This means you need to focus and score well on these topics in specific:
-  - Verbal Expression (VE)
-  - Arithmetic Reasoning (AR)
-  - General Science (GS)
-  - Verbal Expression (VE)
-  - Mathematics Knowledge (MK)
-  - Mechanical Comprehension (MC)
+  - GT
+    - Verbal Expression (VE)
+    - Arithmetic Reasoning (AR)
+  - ST
+    - General Science (GS)
+    - Verbal Expression (VE)
+    - Mathematics Knowledge (MK)
+    - Mechanical Comprehension (MC)
 
 </details>
 
