@@ -36,26 +36,67 @@
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
 ---
 - Armed Services Vocational Aptitude Battery (ASVAB) Preperation
-  - CAT-ASVAB (Online Computer)
-    - 135 Questions
-    - 173 Minutes
-  - P&P-ASVAB (Pen and Paper)
-    - 225 Questions
-    - 149 Minutes
-  - Question Catagories
-    - CL -- Clerical: VE+AR+MK
-    - CO -- Combat: AR+CS+AS+MC
-    - EL -- Electronics: GS+AR+MK+EI
-    - FA -- Field artillery: AR+CS+MK+MC
-    - GM -- General maintenance: GS+AS+MK+EI
-    - GT -- General technical: VE+AR
-    - MM -- Mechanical maintenance: NO+AS+MC+EI
-    - OF -- Operators and food: VE+NO+AS+MC
-    - SC -- Surveillance and communications: VE+AR+AS+MC
-    - ST -- Skilled technical: GS+VE+MK+MC
-  - [ASVAB Scores and Army Jobs](https://www.military.com/join-armed-forces/asvab/asvab-and-army-jobs.html)
-  - [ASVAB PRACTICE TEST](https://nationalguard.com/practice-asvab)
-  - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
+
+<details>
+<summary>Armed Services Vocational Aptitude Battery (ASVAB) Preperation</summary>
+
+- [ASVAB Scores and Army Jobs](https://www.military.com/join-armed-forces/asvab/asvab-and-army-jobs.html)
+
+# AFQT Scores and Trainability
+
+| Category | Percentile Score | Trainability   |
+|----------|------------------|----------------|
+| I        | 93–99            | Outstanding     |
+| II       | 65–92            | Excellent       |
+| III A    | 50–64            | Above average   |
+| III B    | 31–49            | Average         |
+| IV       | 10–30            | Below average   |
+| V        | 1–9              | Not trainable   |
+
+## The U.S. Army’s Ten Line Scores
+
+| Line Score                  | Standard Scores Used                                      | Formula Used               |
+|-----------------------------|----------------------------------------------------------|----------------------------|
+| Clerical (CL)              | Verbal Expression (VE), Arithmetic Reasoning (AR),      | VE + AR + MK               |
+|                             | and Mathematics Knowledge (MK)                            |                            |
+| Combat (CO)                | Arithmetic Reasoning (AR), Coding Speed (CS),          | AR + CS + AS + MC         |
+|                             | Auto & Shop Information (AS), and Mechanical Comprehension (MC) |                            |
+| Electronics (EL)           | General Science (GS), Arithmetic Reasoning (AR),       | GS + AR + MK + EI         |
+|                             | Mathematics Knowledge (MK), and Electronics Information (EI) |                            |
+| Field Artillery (FA)       | Arithmetic Reasoning (AR), Coding Speed (CS),          | AR + CS + MK + MC         |
+|                             | Mathematics Knowledge (MK), and Mechanical Comprehension (MC) |                            |
+| General Maintenance (GM)    | General Science (GS), Auto & Shop Information (AS),    | GS + AS + MK + EI         |
+|                             | Mathematics Knowledge (MK), and Electronics Information (EI) |                            |
+| General Technical (GT)     | Verbal Expression (VE) and Arithmetic Reasoning (AR)    | VE + AR                    |
+| Mechanical Maintenance (MM) | Numerical Operations (NO), Auto & Shop Information (AS),| NO + AS + MC + EI         |
+|                             | Mechanical Comprehension (MC), and Electronics Information (EI) |                            |
+| Operators and Food (OF)    | Verbal Expression (VE), Numerical Operations (NO),      | VE + NO + AS + MC         |
+|                             | Auto & Shop Information (AS), and Mechanical Comprehension (MC) |                            |
+| Surveillance and           | Verbal Expression (VE), Arithmetic Reasoning (AR),     | VE + AR + AS + MC         |
+| Communications (SC)       | Auto & Shop Information (AS), and Mechanical Comprehension (MC) |                            |
+| Skilled Technical (ST)     | General Science (GS), Verbal Expression (VE),          | GS + VE + MK + MC         |
+|                             | Mathematics Knowledge (MK), and Mechanical Comprehension (MC) |                            |
+
+- [ASVAB PRACTICE TEST](https://nationalguard.com/practice-asvab)
+- [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
+
+### 17C (Cyber Operations Specialist) MOS Example:
+
+| Requirement | Minimum Score | Formula Used                          |
+|-------------|---------------|---------------------------------------|
+| GT Score    | 110           | VE + AR                               |
+| ST Score    | 112           | GS + VE + MK + MC                     |
+
+- This means you need to focus and score well on these topics in specific:
+  - Verbal Expression (VE)
+  - Arithmetic Reasoning (AR)
+  - General Science (GS)
+  - Verbal Expression (VE)
+  - Mathematics Knowledge (MK)
+  - Mechanical Comprehension (MC)
+
+</details>
+
 ---
 
 #### Training / Learning
