@@ -45,8 +45,8 @@
 
 ## AFQT Scores and Trainability
 
-| Category | Percentile Score | Trainability   |
-|----------|------------------|----------------|
+| Category | Percentile Score | Trainability    |
+|----------|------------------|-----------------|
 | I        | 93–99            | Outstanding     |
 | II       | 65–92            | Excellent       |
 | III A    | 50–64            | Above average   |
@@ -56,19 +56,18 @@
 
 ## The U.S. Army’s Ten Line Scores
 
-| Line Score                  | Standard Scores Used                                      | Formula Used               |
-|-----------------------------|----------------------------------------------------------|----------------------------|
-| Clerical (CL)              | Verbal Expression (VE), Arithmetic Reasoning (AR), and Mathematics Knowledge (MK)      | VE + AR + MK               |
-| Combat (CO)                | Arithmetic Reasoning (AR), Coding Speed (CS), Auto & Shop Information (AS), and Mechanical Comprehension (MC)          | AR + CS + AS + MC         |
-| Electronics (EL)           | General Science (GS), Arithmetic Reasoning (AR), Mathematics Knowledge (MK), and Electronics Information (EI)      | GS + AR + MK + EI         |                         |
-| Field Artillery (FA)       | Arithmetic Reasoning (AR), Coding Speed (CS), Mathematics Knowledge (MK), and Mechanical Comprehension (MC)         | AR + CS + MK + MC         |                        |
-| General Maintenance (GM)    | General Science (GS), Auto & Shop Information (AS), Mathematics Knowledge (MK), and Electronics Information (EI)   | GS + AS + MK + EI         |                           |
-| General Technical (GT)     | Verbal Expression (VE) and Arithmetic Reasoning (AR)    | VE + AR                    |
-| Mechanical Maintenance (MM) | Numerical Operations (NO), Auto & Shop Information (AS), Mechanical Comprehension (MC), and Electronics Information (EI) | NO + AS + MC + EI         |                          |
-| Operators and Food (OF)    | Verbal Expression (VE), Numerical Operations (NO), Auto & Shop Information (AS), and Mechanical Comprehension (MC)     | VE + NO + AS + MC         |                         |
-| Surveillance and           | Verbal Expression (VE), Arithmetic Reasoning (AR),     | VE + AR + AS + MC         |
-| Communications (SC)       | Auto & Shop Information (AS), and Mechanical Comprehension (MC) |                            |
-| Skilled Technical (ST)     | General Science (GS), Verbal Expression (VE), Mathematics Knowledge (MK), and Mechanical Comprehension (MC)         | GS + VE + MK + MC         |
+| Line Score                           | Standard Scores Used                                                                                                     | Formula Used              |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| Clerical (CL)                        | Verbal Expression (VE), Arithmetic Reasoning (AR), and Mathematics Knowledge (MK)                                        | VE + AR + MK              |
+| Combat (CO)                          | Arithmetic Reasoning (AR), Coding Speed (CS), Auto & Shop Information (AS), and Mechanical Comprehension (MC)            | AR + CS + AS + MC         |
+| Electronics (EL)                     | General Science (GS), Arithmetic Reasoning (AR), Mathematics Knowledge (MK), and Electronics Information (EI)            | GS + AR + MK + EI         |
+| Field Artillery (FA)                 | Arithmetic Reasoning (AR), Coding Speed (CS), Mathematics Knowledge (MK), and Mechanical Comprehension (MC)              | AR + CS + MK + MC         |
+| General Maintenance (GM)             | General Science (GS), Auto & Shop Information (AS), Mathematics Knowledge (MK), and Electronics Information (EI)         | GS + AS + MK + EI         |
+| General Technical (GT)               | Verbal Expression (VE) and Arithmetic Reasoning (AR)                                                                     | VE + AR                   |
+| Mechanical Maintenance (MM)          | Numerical Operations (NO), Auto & Shop Information (AS), Mechanical Comprehension (MC), and Electronics Information (EI) | NO + AS + MC + EI         |
+| Operators and Food (OF)              | Verbal Expression (VE), Numerical Operations (NO), Auto & Shop Information (AS), and Mechanical Comprehension (MC)       | VE + NO + AS + MC         |
+| Surveillance and Communications (SC) | Verbal Expression (VE), Arithmetic Reasoning (AR), Auto & Shop Information (AS), and Mechanical Comprehension (MC)       | VE + AR + AS + MC         |
+| Skilled Technical (ST)               | General Science (GS), Verbal Expression (VE), Mathematics Knowledge (MK), and Mechanical Comprehension (MC)              | GS + VE + MK + MC         |
 
 - [ASVAB PRACTICE TEST](https://nationalguard.com/practice-asvab)
 - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
