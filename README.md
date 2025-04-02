@@ -43,7 +43,7 @@
 
 - [ASVAB Scores and Army Jobs](https://www.military.com/join-armed-forces/asvab/asvab-and-army-jobs.html)
 
-# AFQT Scores and Trainability
+## AFQT Scores and Trainability
 
 | Category | Percentile Score | Trainability   |
 |----------|------------------|----------------|
