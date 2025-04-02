@@ -69,6 +69,21 @@
 | Surveillance and Communications (SC) | Verbal Expression (VE), Arithmetic Reasoning (AR), Auto & Shop Information (AS), and Mechanical Comprehension (MC)       | VE + AR + AS + MC         |
 | Skilled Technical (ST)               | General Science (GS), Verbal Expression (VE), Mathematics Knowledge (MK), and Mechanical Comprehension (MC)              | GS + VE + MK + MC         |
 
+## The ASVAB Subtests in Order
+
+| Subtest                       | Questions/Time (CAT-ASVAB)                     | Possible Questions/Time (CAT-ASVAB)  | Questions/Time (Paper Version) | Content                                                        |
+|-------------------------------|------------------------------------------------|--------------------------------------|--------------------------------|----------------------------------------------------------------|
+| General Science (GS)          | 15 questions, 12 minutes                       | 30 questions, 25 minutes             | 25 questions, 11 minutes       | General principles of biological and physical sciences         |
+| Arithmetic Reasoning (AR)     | 15 questions, 55 minutes                       | 30 questions, 113 minutes            | 30 questions, 36 minutes       | Word problems involving high school math concepts that require calculations |
+| Word Knowledge (WK)           | 15 questions, 9 minutes                        | 30 questions, 18 minutes             | 35 questions, 11 minutes       | Correct meaning of a word; occasionally antonyms (words with opposite meanings) |
+| Paragraph Comprehension (PC)  | 10 questions, 27 minutes                       | 25 questions, 75 minutes             | 15 questions, 13 minutes       | Questions based on passages (usually a couple of hundred words) that you read |
+| Mathematics Knowledge (MK)    | 15 questions, 31 minutes                       | 30 questions, 65 minutes             | 25 questions, 24 minutes       | High school math, including algebra and geometry               |
+| Electronics Information (EI)  | 15 questions, 10 minutes                       | 30 questions, 21 minutes             | 20 questions, 9 minutes        | Electrical principles, basic electronic circuitry, and electronic terminology |
+| Auto & Shop Information (AS)  | 10 Auto Information questions, 7 minutes; 10 Shop Information questions, 7 minutes | 25 Auto Information questions, 18 minutes; 25 Shop Information questions, 17 minutes | 25 questions, 11 minutes     | Knowledge of automobiles, shop terminology, and tool use     |
+| Mechanical Comprehension (MC) | 15 questions, 22 minutes                       | 30 questions, 42 minutes             | 25 questions, 19 minutes       | Basic mechanical and physical principles                       |
+| Assembling Objects (AO)*      | 15 questions, 18 minutes                       | 30 questions, 38 minutes             | 25 questions, 15 minutes       | Spatial orientation                                            |
+
+
 - [ASVAB PRACTICE TEST](https://nationalguard.com/practice-asvab)
 - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
 
