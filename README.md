@@ -35,10 +35,11 @@
       - Make sure to utilize your transcript for college credits!
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
 ---
-- Armed Services Vocational Aptitude Battery (ASVAB) Preperation
 
 <details>
-<summary>Armed Services Vocational Aptitude Battery (ASVAB) Preperation</summary>
+<summary>ASVAB Preperation</summary>
+
+# Armed Services Vocational Aptitude Battery (ASVAB)
 
 - [ASVAB Scores and Army Jobs](https://www.military.com/join-armed-forces/asvab/asvab-and-army-jobs.html)
 
