@@ -19,7 +19,7 @@
   - [Servicemembers Civil Relief Act (SCRA)](https://www.militaryonesource.mil/financial-legal/personal-finance/servicemembers-civil-relief-act/)
 
 #### Financial
-  - [myPay](https://mypay.dfas.mil/)
+  - [myPay](https://mypay.dfas.mil/#/)
   - [MyArmyBenefits](https://myarmybenefits.us.army.mil/)
   - [Thrift Savings Plan (TSP)](https://www.tsp.gov/)
   - [Defense Finance Accounting Service (DFAS)](https://www.dfas.mil/)
