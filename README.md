@@ -95,6 +95,7 @@
 
 
 - [ASVAB PRACTICE TEST](https://nationalguard.com/practice-asvab)
+- [DDRPT - Quick Practice Test](https://ddrpt.com/index.php?action=quicktest)
 - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
 
 ### 17C (Cyber Operations Specialist) MOS Example:
@@ -119,6 +120,9 @@
 ---
 
 #### Training / Learning
+  - [Security Awareness Hub](https://securityawareness.usalearning.gov/)
+    - [Derivative Classification](https://securityawareness.usalearning.gov/derivative/index.htm)
+    - [DOD Mandatory Controlled Unclassified Information (CUI) Training](https://securityawareness.usalearning.gov/cui/story.html)
   - [jkodirect.jten.mil](https://jkodirect.jten.mil/Atlas2/page/desktop/DesktopHome.jsf)
   - [cs.signal.army.mil](https://cs.signal.army.mil/UserMngmt/UserPortal.asp)
   - [www.lms.army.mil](https://www.lms.army.mil/)
