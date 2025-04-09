@@ -131,9 +131,10 @@
 ---
 
 #### Training / Learning
-  - [Security Awareness Hub](https://securityawareness.usalearning.gov/)
+  - [Security Awareness Hub](https://securityawareness.usalearning.gov/index.html)
     - [Derivative Classification](https://securityawareness.usalearning.gov/derivative/index.htm)
-    - [DOD Mandatory Controlled Unclassified Information (CUI) Training](https://securityawareness.usalearning.gov/cui/story.html)
+    - [DOD Mandatory Controlled Unclassified Information (CUI) Training](https://securityawareness.usalearning.gov/cui/story.html)\
+    - [Marking Special Categories of Classified Information](https://securityawareness.usalearning.gov/markings/index.htm)
   - [jkodirect.jten.mil](https://jkodirect.jten.mil/Atlas2/page/desktop/DesktopHome.jsf)
   - [cs.signal.army.mil](https://cs.signal.army.mil/UserMngmt/UserPortal.asp)
   - [www.lms.army.mil](https://www.lms.army.mil/)
