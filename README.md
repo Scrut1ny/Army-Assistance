@@ -138,9 +138,9 @@
   - [cs.signal.army.mil](https://cs.signal.army.mil/UserMngmt/UserPortal.asp)
   - [www.lms.army.mil](https://www.lms.army.mil/)
 
-#### Common Acronyms Decoded
-
 ---
+
+#### Common Acronyms Decoded
 
 <details>
 <summary>List...</summary>
