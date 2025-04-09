@@ -140,6 +140,8 @@
 
 #### Common Acronyms Decoded
 
+---
+
 <details>
 <summary>List...</summary>
 
@@ -169,6 +171,8 @@
 | XO      | Executive Officer                                           |
 
 </details>
+
+---
 
 #### Cheat Scripts
   - [scripts](https://github.com/Clutch152/scripts)
@@ -246,3 +250,10 @@
 |  |  |
 
 </details>
+
+---
+
+#### Miscellaneous
+
+- 🌐 Utilizing Port 53 (*DNS*) with a VPN on Public Wi-Fi
+  - Connect to a VPN service, configuring it to use port 53. This disguises VPN traffic as DNS queries, bypassing login requirements on public WiFi with captive portal networks, ensuring unrestricted internet access while preserving privacy and security.
