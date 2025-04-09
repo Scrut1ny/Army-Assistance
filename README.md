@@ -4,11 +4,15 @@
   - [AVD](https://aka.ms/AVDGov)
     - [Azure environments](https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-remote-desktop-client?tabs=web#subscribe-to-a-workspace-and-connect-to-your-desktops-and-applications)
 
+---
+
 #### A365 Webapps
   - [Office Home](https://www.ohome.apps.mil/)
   - [Teams](https://dod.teams.microsoft.us/v2/)
   - [Outlook](https://webmail.apps.mil/mail/inbox)
   - [Excel](https://www.ohome.apps.mil/launch/excel?auth=2&username=.mil@army.mil)
+
+---
 
 #### Personal
   - [iPERMS RMA](https://iperms.hrc.army.mil/)
@@ -18,15 +22,21 @@
   - [MHS Genesis Patient Portal](https://my.mhsgenesis.health.mil/pages/home)
   - [Servicemembers Civil Relief Act (SCRA)](https://www.militaryonesource.mil/financial-legal/personal-finance/servicemembers-civil-relief-act/)
 
+---
+
 #### Financial
   - [myPay](https://mypay.dfas.mil/#/)
   - [MyArmyBenefits](https://myarmybenefits.us.army.mil/)
   - [Thrift Savings Plan (TSP)](https://www.tsp.gov/)
   - [Defense Finance Accounting Service (DFAS)](https://www.dfas.mil/)
 
+---
+
 #### Army Publishing Directorate (APD)
   - [DA Forms Directory](https://armypubs.army.mil/default.aspx)
   - [Army Regulations](https://armypubs.army.mil/productmaps/pubform/ar.aspx)
+
+---
 
 #### Education
   - [ArmyIgnitED](https://www.armyignited.army.mil/student/)
@@ -34,6 +44,7 @@
   - [Joint Services Transcript (JST)](https://jst.doded.mil/jst/)
       - Make sure to utilize your transcript for college credits!
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
+
 ---
 
 <details>
