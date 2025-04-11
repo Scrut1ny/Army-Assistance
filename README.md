@@ -65,6 +65,13 @@
 | IV       | 10–30            | Below average   |
 | V        | 1–9              | Not trainable   |
 
+## Main 4 AFQT Subjects
+
+- Word Knowledge (WK)
+- Paragraph Comprehension (PC)
+- Arithmetic Reasoning (AR)
+- Mathematics Knowledge (MK)
+
 ## The U.S. Army’s Ten Line Scores
 
 | Line Score                           | Standard Scores Used                                                                                                     | Formula Used              |
