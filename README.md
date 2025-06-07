@@ -263,3 +263,9 @@
 
 - 🌐 Utilizing Port 53 (*DNS*) with a VPN on Public Wi-Fi
   - Connect to a VPN service, configuring it to use port 53. This disguises VPN traffic as DNS queries, bypassing login requirements on public WiFi with captive portal networks, ensuring unrestricted internet access while preserving privacy and security.
+
+- Compact Smart Card R/W
+  - [Advanced Card Systems](https://www.acs.com.hk/)
+    - [‎ACR38U-N1 | Black | USB-A](https://www.amazon.com/dp/B00RPNZ3BG)
+    - [‎ACR39U-N1 | White | USB-A](https://www.amazon.com/dp/B0758TS5JR)
+    - [‎ACR39U-NF | White | USB-C](https://www.amazon.com/dp/B06X9NTGYV)
