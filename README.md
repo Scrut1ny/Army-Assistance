@@ -133,6 +133,9 @@
     - Mathematics Knowledge (MK)
     - Mechanical Comprehension (MC)
 
+- Information and Communication Technology Literacy (ICTL)
+  - [Quizlet - ICTL TEST (CYBER TEST)](https://quizlet.com/625879191/ictl-test-cyber-test-flash-cards/)
+
 </details>
 
 ---
