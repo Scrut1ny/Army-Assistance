@@ -135,6 +135,7 @@
 
 - Information and Communication Technology Literacy (ICTL)
   - [Quizlet - ICTL TEST (CYBER TEST)](https://quizlet.com/625879191/ictl-test-cyber-test-flash-cards/)
+  - [ARMY CYBER ICTL EXAM](https://www.reddit.com/r/nationalguard/comments/1d7c7j0/army_cyber_ictl_exam/)
 
 </details>
 
