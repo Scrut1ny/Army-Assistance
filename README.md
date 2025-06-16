@@ -111,7 +111,8 @@
 | Pre-screening, internet-delivered Computerized Adaptive Test (PiCAT) | Online, on your own time after receiving an access code from your recruiter | Computer                        | The PiCAT is an unproctored, full version of the ASVAB. You take it on your own time, but you must take a verification test at a MEPS to validate your score. The verification test typically takes 25 to 30 minutes to complete. |
 | Armed Forces Classification Test (AFCT) | Given at installation educational centers to people already in the military through the Defense Manpower Data Center | Computer                        | At some point during your military career, you may want to retrain for a different job. If you need higher ASVAB scores to qualify for such retraining, or if you’re a commissioned officer who wants to become a warrant officer, you can take the AFCT. The AFCT is essentially the same as the other versions of the ASVAB. |
 
-
+- [ASVAB Practice Test](https://asvabpracticetestonline.com/asvab-test-sections/)
+- [Sample Questions - ASVAB](https://www.officialasvab.com/applicants/sample-questions/)
 - [ASVAB PRACTICE TEST](https://nationalguard.com/practice-asvab)
 - [DDRPT - Quick Practice Test](https://ddrpt.com/index.php?action=quicktest)
 - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
