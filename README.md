@@ -283,7 +283,6 @@
       - WiFi Technology: `WiFi 6`
       - Max Speed: `3.6 Gbps`
     - [Nighthawk M6 Pro (MR6550)](https://www.amazon.com/dp/B0BGV79FHT)
-      - Unlocked, International Roaming 125+ Countries
       - Band Compatibility: `5G mmWave, Sub-6, 8.0 Gbps`
       - WiFi Technology: `WiFi 6E`
       - Max Speed: `3.6 Gbps`
