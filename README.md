@@ -275,3 +275,6 @@
     - [‎ACR38U-N1 | Black | USB-A](https://www.amazon.com/dp/B00RPNZ3BG)
     - [‎ACR39U-N1 | White | USB-A](https://www.amazon.com/dp/B0758TS5JR)
     - [‎ACR39U-NF | White | USB-C](https://www.amazon.com/dp/B06X9NTGYV)
+
+- Article 15 (UCMJ)
+  - [Educational Video](https://go.screenpal.com/watch/cZhwljVNhrV)
