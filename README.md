@@ -276,5 +276,17 @@
     - [‎ACR39U-N1 | White | USB-A](https://www.amazon.com/dp/B0758TS5JR)
     - [‎ACR39U-NF | White | USB-C](https://www.amazon.com/dp/B06X9NTGYV)
 
+- Mobile Hotspot (Wi-Fi Puck)
+  - NETGEAR
+    - [Nighthawk M6 (MR6150)](https://www.amazon.com/dp/B0BGV79FHT)
+      - Band Compatibility: `5G SA/NSA, 2.5 Gbps`
+      - WiFi Technology: `WiFi 6`
+      - Max Speed: `3.6 Gbps`
+    - [Nighthawk M6 Pro (MR6550)](https://www.amazon.com/dp/B0BGV79FHT)
+      - Unlocked, International Roaming 125+ Countries
+      - Band Compatibility: `5G mmWave, Sub-6, 8.0 Gbps`
+      - WiFi Technology: `WiFi 6E`
+      - Max Speed: `3.6 Gbps`
+
 - Article 15 (UCMJ)
   - [Educational Video](https://go.screenpal.com/watch/cZhwljVNhrV)
