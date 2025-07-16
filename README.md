@@ -276,7 +276,7 @@
     - [‎ACR39U-N1 | White | USB-A](https://www.amazon.com/dp/B0758TS5JR)
     - [‎ACR39U-NF | White | USB-C](https://www.amazon.com/dp/B06X9NTGYV)
 
-- Mobile Hotspot (Wi-Fi Puck)
+- Mobile Hotspot Router (Wi-Fi Puck) - Recommended for overseas deployments
   - NETGEAR
     - [Nighthawk M6 (MR6150)](https://www.amazon.com/dp/B0BGV79FHT)
       - Band Compatibility: `5G SA/NSA, 2.5 Gbps`
