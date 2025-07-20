@@ -120,6 +120,8 @@
 - [DDRPT - Quick Practice Test](https://ddrpt.com/index.php?action=quicktest)
 - [Pending Internet Computerized Adaptive Test (PiCAT)](https://picat.dpac.mil)
 
+---
+
 ### 17C (Cyber Operations Specialist) MOS Example:
 
 | Requirement | Minimum Score | Formula Used                          |
