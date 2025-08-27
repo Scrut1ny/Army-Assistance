@@ -34,6 +34,12 @@
 
 ---
 
+#### Jobs
+  - [usajobs](https://www.usajobs.gov/)
+  - [clearancejobs](https://www.clearancejobs.com/)
+
+---
+
 #### Army Publishing Directorate (APD)
   - [DA Forms Directory](https://armypubs.army.mil/default.aspx)
   - [Army Regulations](https://armypubs.army.mil/productmaps/pubform/ar.aspx)
