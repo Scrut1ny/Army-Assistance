@@ -20,9 +20,14 @@
   - [ID Card Office Online](https://idco-pki.dmdc.osd.mil/idco/myprofile-info)
   - [Defense Travel System (DTS)](https://dtsproweb.defensetravel.osd.mil/dts-app/pubsite/all/view)
   - [Army Training and Certification Tracking System (ATCTS)](https://atcts.army.mil/)
-  - [MHS Genesis Patient Portal](https://my.mhsgenesis.health.mil/pages/home)
   - [Medical Operational Data System (MODS)](https://www.mods.army.mil/MODSHome)
   - [Servicemembers Civil Relief Act (SCRA)](https://www.militaryonesource.mil/financial-legal/personal-finance/servicemembers-civil-relief-act/)
+
+---
+
+#### Medical
+  - [MHS Genesis Patient Portal](https://my.mhsgenesis.health.mil/pages/home)
+  - [MEDPROS](https://medpros.mods.army.mil/MEDPROSNew/)
 
 ---
 
