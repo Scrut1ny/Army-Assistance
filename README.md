@@ -35,8 +35,8 @@
 ---
 
 #### Jobs
-  - [usajobs](https://www.usajobs.gov/)
-  - [clearancejobs](https://www.clearancejobs.com/)
+  - [USAJOBS](https://www.usajobs.gov/)
+  - [ClearanceJobs](https://www.clearancejobs.com/)
 
 ---
 
