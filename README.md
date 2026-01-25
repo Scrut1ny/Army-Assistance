@@ -246,6 +246,8 @@
 | What does an Incident Response Plans allows for | A timely and controlled response to security incidents, and attempts to mitigate any damage or lose |
 | What is the current DoD repository for sharing security authorization packages and risk assessment data with Authorizing officials? | Enterprise Mission Assurance Support Service (eMass) |
 | What are the three main cloud computing service models | Software as a Service, platform as a Service and Infrastructure as a Service |
+| The two common denial-of-service attacks are | Smurf Attack and Syn Flood |
+| A security plan is to provide an overview of the security requirements of the system and describe the controls in place or planned for meeting those requirements | TRUE |
 
 #### POST Request:
 - https://cs.signal.army.mil/UserMngmt/CyberFundamentals/lessons/CsfPretestSubmit.asp
