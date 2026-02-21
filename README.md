@@ -39,6 +39,12 @@
 
 ---
 
+### Deployment/Mobilization
+
+- [Tour of Duty](https://mobcop.aoc.army.pentagon.mil/)
+
+---
+
 #### Jobs
   - [USAJOBS](https://www.usajobs.gov/)
   - [ClearanceJobs](https://www.clearancejobs.com/)
