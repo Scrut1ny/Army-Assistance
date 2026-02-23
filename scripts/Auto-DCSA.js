@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         DCSA Quiz Auto-Select
+// @name         DCSA Quiz Auto-Select & Submit
 // @namespace    http://tampermonkey.net/
-// @version      4.0
-// @description  Auto-selects correct answers on DCSA quiz slides
+// @version      6.0
+// @description  Auto-selects correct answers, submits, and continues on DCSA quiz slides
 // @author       Scrut1ny
 // @match        https://securityawareness.dcsa.mil/*
 // @grant        none
@@ -14,9 +14,13 @@
     var last = '', timer;
 
     function click(el) {
-        if (el.checked) return;
+        if (!el || el.checked) return;
         var r = el.getBoundingClientRect(), o = { bubbles: true, clientX: r.x + r.width / 2, clientY: r.y + r.height / 2 };
         ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click'].forEach(function(e) { el.dispatchEvent(new MouseEvent(e, o)); });
+    }
+
+    function clickBtn(selector, delay) {
+        setTimeout(function() { click(document.querySelector(selector)); }, delay);
     }
 
     function run() {
@@ -35,12 +39,14 @@
                 (ids.length ? ids : [a.id]).forEach(function(i) { var e = document.getElementById('acc-' + i); if (e) click(e); });
             });
         });
+        clickBtn('button.acc-button[aria-label*="submit"]', 300);
+        clickBtn('button.acc-button[aria-label*="continue"]', 800);
     }
 
     (function poll() {
         if (typeof DS === 'undefined' || !DS.slidesController) return setTimeout(poll, 1000);
         new MutationObserver(function() { clearTimeout(timer); timer = setTimeout(run, 400); })
-        .observe(document.getElementById('slide-window') || document.body, { childList: true, subtree: true });
+            .observe(document.getElementById('slide-window') || document.body, { childList: true, subtree: true });
         run();
     })();
 })();
