@@ -266,51 +266,74 @@
 <details>
 <summary>Q&A</summary>
 
-- [Quizlet - DOD Cyber Awareness Challenge 2025 Knowledge check](https://quizlet.com/959068751/dod-cyber-awareness-challenge-2025-knowledge-check-flash-cards/)
-
 - [CA Pre-Test](https://cs.signal.army.mil/UserMngmt/CyberAwareness_2025/launch.asp)
 
 | Question | Answer |
 |-|-|
+| Which of the following is true of information designated as Unclassified? | It does not have the potential to damage national security. |
 | What is Controlled Unclassified Information (CUI)? | Information that belongs to a category established in the DoD CUI Registry |
 | Which of the following is an example of Personally Identifiable Information (PII)? | Mother’s maiden name |
+| Travis is processing travel reimbursements for the past quarter and needs to share travel rosters containing passport numbers with his supervisor for approval. Which is an approved way to transmit this information? | Encrypted Government e-mail with a digital signature |
 | Which of the following is an example of Protected Health Information (PHI)? | An individual’s medical record maintained by a healthcare provider |
+| Paula is compiling statistics on healthcare provided to Service members over the last fiscal year. Some of her source data includes Protected Health Information (PHI). How can she properly process this data? | Use a Government-issued device to access it from a folder with controlled access |
 | Peter enters an empty conference room and finds a document with a Top Secret coversheet on it. Peter has a Secret clearance. What should Peter do? | Immediately notify his security POC and not handle the file |
+| Which type of information could reasonably be expected to cause exceptionally grave damage to national security if disclosed? | Top Secret |
 | Which of the following is an example of a correct way to protect classified data? | Andrea verifies need-to-know and security eligibility before sharing classified information. |
 | How can you prevent spillage? | Label all files with appropriate classification markings |
+| What consequence could you expect from modifying government equipment without authorization? | All of these |
+| Devon receives an e-mail on her Unclassified computer. The e-mail has an unmarked attachment that contains what she recognizes as classified information. What should Devon do? | Immediately notify her security POC |
 | How can you identify the separation of Sensitive Compartmented Information (SCI) classified material from collateral classified material? | Markings that identify the compartment with which it is affiliated |
+| What is a Security Classification Guide? | A primary source for derivative classification |
+| Which of the following is true of transmitting Sensitive Compartmented Information (SCI)? | SCI may be printed using an authorized printer when retrieved promptly. |
 | Which of the following is a best practice for physical security? | Badge into your facility separately when entering with another coworker |
 | Delia processes healthcare claims for Service members. As part of her duties, she sometimes needs to telephone team members and partner organizations to resolve issues specific to individual claims. As she often needs to access files and take notes on these calls, she prefers to use speakerphone so that her hands are free. She works on-site at a government facility in an open office environment. Does this pose a security concern? | Yes. Even in a closed work environment, Delia should take care when discussing personally identifiable information (PII) where others without a need-to-know may overhear. |
 | Which of the following is permitted within a collateral classified environment? | A wired headset without a microphone |
+| What should you do with your badge within a Sensitive Compartmented Information Facility (SCIF)? | Wear it visibly and above the waist |
 | Ed has authorized access to his agency’s Sensitive Compartmented Information Facility (SCIF) and plans to work on a project there today. Which of the following can’t he take into the SCIF? | All of these |
 | Under which Cyberspace Protection Condition (CPCON) is the priority focus limited to critical and essential functions? | CPCON 2 |
 | Which of the following is an allowed use of a government-furnished smartphone? | Responding to e-mails on your government e-mail account |
 | Martha supervises a government unit. To improve morale, she frequently e-mails inspirational stories and photos with inspirational quotes on them to her team. Is this an appropriate use of government e-mail? | No. These e-mails generate unnecessary e-mail traffic. |
+| Which of the following formats may be considered official records for Government communications? | All of these |
 | Which of the following is an example of two-factor authentication? | Password and fingerprint |
+| Which of the following is an example of a strong password? | x-Pa_EwR7X&c |
+| While at your workstation, you hear an unusual sound coming from the direction of the office door. Before you go to check on the noise, what must you do? | Remove your Common Access Card (CAC) from your workstation |
 | In what level of system can you use a SIPRNet public key infrastructure (PKI) token? | SIPRNet |
+| On a Government-owned mobile device, what should you do before installing an application? | Ensure that it is an approved and authorized application |
 | Which of the following e-mail practices can help to prevent inadvertently downloading viruses? | Look for a digital signature on e-mails |
 | While taking a break at your workstation, you switch to your computer’s web browser intending to look up the evening’s weather forecast. You notice open tabs in your web browser that you don’t recall opening. Is this a concern? | Yes. The appearance of new extensions or tabs in your web browser may indicate a cybersecurity incident. |
 | Sara is a government employee with a high degree of expertise in her field. She receives an e-mail from a foreign national that is complimentary of Sara’s expertise and seeks to make a connection with her to learn more about her work. What should Sara do? | Report the contact to her security POC |
 | You receive an e-mail with a link to verify that your account is active. It says you must click the link within 2 days. Your IT department has not sent links like this in the past. The e-mail is not digitally signed. What action should you take? | Report the e-mail to your security POC or help desk |
 | You receive a suspicious e-mail that appears to have come from an organization that partners with your agency. Your co-workers have received a similar e-mail. What might this be? | Spear phishing |
+| You receive a text message from a commercial shipping company notifying you that they need an updated address to deliver a package to you. It provides a link for you to provide the information needed. What is the best course of action? | Delete the message |
+| What is a risk to Government systems posed by removable media? | Their data storage and ability to connect to systems can lead to unintended transfers of information, such as introduction of malicious code or spillage. |
 | Evelyn is a system administrator at her agency. As part of her duties, she occasionally uses a thumb drive to perform necessary system tasks, as outlined in her agency’s procedures. The thumb drive is provided by the Government for this purpose. Is this an appropriate use of removable media? | Yes. Only use removable media when operationally necessary, Government-owned, and approved in accordance with policy. |
 | What is the appropriate way to label an approved portable hard drive containing personally identifiable information (PII)? | Clearly label the outside as containing PII so that its contents are known |
 | You have been issued a new Government-owned mobile device. What is a step you should take to secure it? | Set up a passcode to unlock it |
 | Oscar is on official Government travel with a Government-issued laptop. While at the airport, he uses the laptop to work on a report containing controlled unclassified information (CUI). For connectivity, he uses his personal phone as a mobile hotspot. Are there any security concerns here? | Yes. He should be vigilant for “shoulder surfing,” where others may be able to view the information on his screen. |
+| While picking up lunch at a cafe, Thom waits for his order at an empty table near the pickup counter. When his name is called, he gets up to retrieve his order, briefly leaving his phone sitting on the table where he was waiting. Does this pose a risk? | Yes. Someone could have taken off with his phone. |
+| How can you take back any content you post to a social networking site if you change your mind? | You can’t. Once you post it, the site owns your content. |
 | Consider this social media post. Are there any security concerns in it? “Having a great time at the beach with the fam! So sad to be going home in a couple of days.” | Yes. It lets people know that your home is currently unoccupied. |
+| Consider this social media post. Are there any security concerns in it? “I’m hosting a family reunion for my mom’s side of the family, the Smiths. Come by my place at 1234 Mockingbird Lane on the 8th…and grab a slice of birthday cake for me while you’re there!” | Yes. It contains several items of personally identifiable information (PII), including the mother’s maiden name, home address, and birthday. |
 | Walter shares a link to a news article about the Department of Defense on his social media. Along with the link, he states that he disagrees with the reporting in the article as a DoD employee. Does this pose a security concern? | Yes. Walter should avoid appearing to speak on behalf of the Government. |
 | While scrolling your social media feed, you are presented with a news article with an incendiary headline accompanied by a video. What should you consider before sharing this article? | You should consider the source and whether this information appears elsewhere. |
 | How should you approach a compressed URL, such as Tiny URL? | Preview where the link leads before opening it |
+| Which of the following is a best practice when browsing the Internet? | Look for an icon to indicate encryption is functioning |
 | Trisha receives an e-mail with a sensational rumor about a celebrity’s personal life. Which of the following actions should Trisha NOT take with the e-mail? | Forward it |
 | Oliver uses his phone to look up information about a jacket he might want to purchase. Later, he notices ads for the jacket appearing on websites that he views using his laptop. Why would he see this happen? | Oliver’s apps and devices collect and share information about him. |
+| Which of the following is a best practice to protect your identity? | Monitor your financial statements and credit reports |
 | What should you do if you suspect your identity has been stolen? | All of these |
+| How does an insider threat harm national security? | Exploiting their trusted status and authorized access to government resources |
 | How do Insider Threat Programs defend against insider threats? | Intervening early to help individuals with issues |
+| Which of the following is a potential insider threat indicator? | Untreated alcohol use disorder |
 | Which of the following is an example of an individual’s activity that you should report? | Changing workplace behavior abruptly |
 | Based on the description provided, how many insider threat indicators are present? John frequently comes to work appearing to be hungover. While his access to classified information is consistent with his clearance eligibility and need-to-know, his handling of the information does not protect it from others without eligibility and a need-to-know in accordance with security guidelines. Several coworkers have observed John bringing a cell phone into classified areas where devices are prohibited. | 3+ |
 | Based on the description provided, how many insider threat indicators are present? Jean is a long-term government employee who recently transferred from one agency to another to take a supervisory role. As part of her transition, Jean requires a higher level of access to sensitive information. | 0 |
+| Which of the following is a best practice for working offsite during official travel? | Position your monitor so that it is not easily observed by others while in use |
 | Which of the following personally owned peripherals can you use with government furnished equipment (GFE)? | Wired keyboards, mice, and trackballs through a USB connection |
 | What risk is posed by Internet of Things (IoT) devices? | Their connectivity can be exploited as an attack vector to any other device on the same network. |
+| How can you protect your home computer? | Scan files for viruses |
 | How can you protect your home computer? | Turn on spyware protection |
+| What is a best practice for user accounts on your home computer? | Each user should have their own account. |
 
 </details>
 
