@@ -39,7 +39,7 @@
 
 ---
 
-#### Deployment/Mobilization
+#### Deployment/Mobilization (*NIPR/AVD Required*)
 
 - [Tour of Duty](https://mobcop.aoc.army.pentagon.mil/)
 
