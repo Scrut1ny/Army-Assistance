@@ -1,15 +1,16 @@
 // ==UserScript==
-// @name         Cyber Awareness Auto Redirect
+// @name         Cyber Awareness Auto Redirect & Verify
 // @namespace    https://github.com/Scrut1ny
-// @version      1.0
-// @description  Automatically redirects to the "Verify Training" page.
+// @version      2.0
+// @description  Automatically redirects to the "Verify Training" page and clicks the button.
 // @author       Scrut1ny
-// @match        https://cs.signal.army.mil/UserMngmt/CyberAwareness_*/pages/disacac01_01.html
+// @match        *://cs.signal.army.mil/*/CyberAwareness_*/pages/disacac01_01.html
 // @run-at       document-start
 // @grant        none
 // ==/UserScript==
 
-(function () {
-    'use strict';
-    window.location.replace('https://cs.signal.army.mil/usermngmt/CyberAwareness_2026/pages/disacac18_02_army.html');
+(() => {
+    if (location.pathname.includes('disacac01_01')) {
+        return location.replace(location.href.replace(/disacac01_01\.html/, 'disacac18_02_army.html'));
+    }
 })();
