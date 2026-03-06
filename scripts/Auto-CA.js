@@ -1,10 +1,8 @@
-(function () {
-    const root = document.querySelector('[x-data="speedMission"]');
-    const state = root?._x_dataStack?.[0];
-    if (!state?.sm?.qs?.length) return;
-
-    state.sm.qs.forEach(q => {
-        state.answer = q.a;
-        state.submitSm();
-    });
+(() => {
+    const s = Alpine.$data(document.querySelector('[x-data="speedMission"]'));
+    for (const q of s?.sm?.qs || [])
+        Object.assign(s, {
+            submit: false,
+            answer: q.a[1]
+        }), s.submitSm();
 })();
