@@ -1,5 +1,8 @@
 ## Cyber Awareness
 
+<details>
+<summary>Expand for details...</summary>
+
 - [🥇] Skip to "Congratulations" page.
 ```js
 // https://cs.signal.army.mil/usermngmt/cyberend.asp
@@ -39,11 +42,66 @@
 })();
 ```
 
+</details>
+
+
+
+
+
+
+
+
+## Cyber Security Fundamentals (CSF)
+
+<details>
+<summary>Expand for details...</summary>
+
+### The Problem
+
+10-question exam. Submitting answers returns only a **total score** (how many correct) — not which ones. Goal: find all 10 answers with minimum requests.
+
+### Key Insight
+
+Instead of testing one question per request (wasteful), **each request encodes information about all 10 questions at once.** The correct answer key must satisfy every score simultaneously — a constraint satisfaction problem.
+
+### The 7 Patterns
+
+- **Patterns 0-3 (baselines):** All-1s, all-2s, all-3s, all-4s → gives exact count of each answer value
+- **Patterns 4-6 (binary separators):** Unique 1/2 signature per question → breaks symmetry between questions sharing the same answer
+
+All 7 fire in **one parallel burst**. A backtracking solver with pruning finds all valid answer sets in <10ms.
+
+### Why 8, Not 7
+
+**Information theory:** ~20 bits needed, ~3.5 bits per score → **6 minimum**. But scores are integer sums — value swaps (e.g., Q5=1,Q9=2 ↔ Q5=2,Q9=1) can produce identical totals across all patterns.
+
+3 binary separators give 2³=8 unique signatures for 10 questions — **pigeonhole principle** guarantees collisions. So 7 patterns sometimes yield 2 valid solutions.
+
+The **8th request** is a targeted disambiguator: it submits one candidate's values at the differing positions, guaranteeing the candidates score differently. Always resolves in one shot.
+
+### Result
+
+| | Naive | Optimized |
+|---|---|---|
+| Requests | 14 | **8** |
+| Rounds | 2 | 1 + 1 if needed |
+| Correctness | Edge cases possible | **Guaranteed** |
+
+**8 requests is the proven mathematical floor.** 6 gives wrong answers, 7 is sometimes ambiguous, 8 always works.
+
+</details>
+
+
+
+
 
 
 
 
 ## DCSA - Security Awareness Hub
+
+<details>
+<summary>Expand for details...</summary>
 
 - [🥇] Print certificate instantly
 ```js
@@ -79,3 +137,5 @@ Coming soon...
     r();
 })();
 ```
+
+</details>
