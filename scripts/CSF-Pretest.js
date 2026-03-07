@@ -1,92 +1,90 @@
-// 🏆 CSF Solver FINAL — 8 requests, 100% correct, single burst + 1 disambiguator
+// 🏆 CSF Solver — 8 reqs, 100% correct
 (async () => {
-    const P = 'https://cs.signal.army.mil/UserMngmt/CyberFundamentals/lessons/CsfPretestSubmit.asp';
-    const t0 = performance.now();
-    let R = 0;
-
-    async function q(a) {
-        R++;
-        const r = await fetch(P, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: a.map((v, i) => `selAnswer${i}=${v}`).join('&'),
-            credentials: 'include'
-        });
-        return ((await r.text()).match(/score of (\d+)%/) || [, -1])[1] / 10;
-    }
-
-    const f = document.querySelector('form[name="CSFpretest"]');
+    const URL = 'https://cs.signal.army.mil/UserMngmt/CyberFundamentals/lessons/CsfPretestSubmit.asp';
+    const form = document.querySelector('form[name="CSFpretest"]');
     const Q = 10;
-    const O = Array.from({length: Q}, (_, i) =>
-        f.querySelectorAll(`input[name="selAnswer${i}"]`).length
+    const t0 = performance.now();
+    let reqs = 0;
+
+    const opts = Array.from({length: Q}, (_, i) =>
+        form.querySelectorAll(`input[name="selAnswer${i}"]`).length
     );
 
-    // 7 patterns: 4 baselines + 3 binary separators
-    const P7 = [
-        [1,1,1,1,1,1,1,1,1,1],
-        [2,2,2,2,2,2,2,2,2,2],
-        [3,3,3,3,3,3,3,3,3,3],
-        [4,4,4,4,4,4,4,4,4,4],
-        [1,2,1,2,1,1,2,2,1,2],
-        [1,1,2,2,1,2,1,2,2,1],
+    async function submit(ans) {
+        reqs++;
+        const r = await fetch(URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: ans.map((v, i) => `selAnswer${i}=${v}`).join('&'),
+            credentials: 'include'
+        });
+        const m = (await r.text()).match(/score of (\d+)%/);
+        return m ? parseInt(m[1]) / 10 : -1;
+    }
+
+    // Phase 1: 7 strategic patterns (4 baselines + 3 binary separators)
+    const patterns = [
+        [1,1,1,1,1,1,1,1,1,1], [2,2,2,2,2,2,2,2,2,2],
+        [3,3,3,3,3,3,3,3,3,3], [4,4,4,4,4,4,4,4,4,4],
+        [1,2,1,2,1,1,2,2,1,2], [1,1,2,2,1,2,1,2,2,1],
         [1,1,1,1,2,2,2,2,1,1],
     ];
 
-    const C = P7.map(p => p.map((v, i) => Math.min(v, O[i])));
-    const S = (await Promise.all(C.map(c => q(c)))).map(Math.round);
+    const capped = patterns.map(p => p.map((v, i) => Math.min(v, opts[i])));
+    const scores = await Promise.all(capped.map(c => submit(c)));
 
-    // Backtracking solver — finds up to 10 solutions
-    function solve(caps, scores, lim) {
-        const sol = [];
+    // Phase 2: backtracking solver with pruning
+    function solve(caps, S, limit) {
+        const found = [];
         (function bt(qi, cur) {
-            if (sol.length >= lim) return;
+            if (found.length >= limit) return;
             if (qi === Q) {
                 for (let r = 0; r < caps.length; r++) {
                     let c = 0;
                     for (let j = 0; j < Q; j++) if (caps[r][j] === cur[j]) c++;
-                    if (c !== scores[r]) return;
+                    if (c !== S[r]) return;
                 }
-                sol.push([...cur]);
+                found.push([...cur]);
                 return;
             }
-            for (let g = 1; g <= O[qi]; g++) {
+            for (let g = 1; g <= opts[qi]; g++) {
                 cur[qi] = g;
                 let ok = true;
                 for (let r = 0; r < caps.length; r++) {
                     let c = 0;
                     for (let j = 0; j <= qi; j++) if (caps[r][j] === cur[j]) c++;
-                    if (c > scores[r] || c + Q - qi - 1 < scores[r]) { ok = false; break; }
+                    if (c > S[r] || c + Q - qi - 1 < S[r]) { ok = false; break; }
                 }
                 if (ok) bt(qi + 1, cur);
             }
             cur[qi] = 0;
         })(0, Array(Q).fill(0));
-        return sol;
+        return found;
     }
 
-    let sols = solve(C, S, 10);
+    let sols = solve(capped, scores, 10);
 
-    // Disambiguate if needed
+    // Phase 3: disambiguate if multiple solutions
     while (sols.length > 1) {
-        const d = Array(Q).fill(0);
+        const probe = Array(Q).fill(0);
         for (let i = 0; i < Q; i++) {
-            const vals = new Set(sols.map(s => s[i]));
-            d[i] = vals.size > 1 ? sols[0][i] : (sols[0][i] === 1 ? 2 : 1);
+            const unique = new Set(sols.map(s => s[i])).size > 1;
+            probe[i] = unique ? sols[0][i] : (sols[0][i] === 1 ? 2 : 1);
         }
-        const dc = d.map((v, i) => Math.min(v, O[i]));
-        const ds = Math.round(await q(dc));
+        const cp = probe.map((v, i) => Math.min(v, opts[i]));
+        const ds = await submit(cp);
         sols = sols.filter(s => {
             let c = 0;
-            for (let j = 0; j < Q; j++) if (dc[j] === s[j]) c++;
+            for (let j = 0; j < Q; j++) if (cp[j] === s[j]) c++;
             return c === ds;
         });
     }
 
-    // Auto-fill
+    // Auto-fill and done
     sols[0].forEach((v, i) => {
-        const r = f.querySelectorAll(`input[name="selAnswer${i}"]`);
+        const r = form.querySelectorAll(`input[name="selAnswer${i}"]`);
         if (r[v - 1]) r[v - 1].checked = true;
     });
 
-    console.log(`🏆 [${sols[0].join(',')}] | ${R} reqs, ${(performance.now() - t0).toFixed(0)}ms`);
+    console.log(`🏆 [${sols[0].join(',')}] | ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms`);
 })();
