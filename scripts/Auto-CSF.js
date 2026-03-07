@@ -1,4 +1,3 @@
-// 🏆 CSF Solver — 8 reqs, 100% correct
 (async () => {
     const URL = 'https://cs.signal.army.mil/UserMngmt/CyberFundamentals/lessons/CsfPretestSubmit.asp';
     const form = document.querySelector('form[name="CSFpretest"]');
