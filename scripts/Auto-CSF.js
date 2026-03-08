@@ -5,8 +5,8 @@
     const t0 = performance.now();
     let reqs = 0;
 
-    const radioGroups = Array.from({length: Q}, (_, i) =>
-        form.querySelectorAll(`input[name="selAnswer${i}"]`)
+    const radioGroups = Array.from({ length: Q }, (_, i) =>
+    form.querySelectorAll(`input[name="selAnswer${i}"]`)
     );
     const opts = radioGroups.map(r => r.length);
 
@@ -16,25 +16,69 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: ans.map((v, i) => `selAnswer${i}=${v}`).join('&'),
-            credentials: 'include'
+                              credentials: 'include'
         });
         const m = (await r.text()).match(/score of (\d+)%/);
         return m ? +m[1] / 10 : -1;
     }
 
-    // Phase 1: uniform baselines + Hadamard-orthogonal binary separators
-    const separators = [];
-    for (let bit = 0; bit < Math.ceil(Math.log2(Q)); bit++) {
-        separators.push(Array.from({length: Q}, (_, i) => ((i >> bit) & 1) + 1));
+    function sc(a, b) {
+        let c = 0;
+        for (let i = 0; i < Q; i++) if (a[i] === b[i]) c++;
+        return c;
     }
 
-    const patterns = [
-        [1,1,1,1,1,1,1,1,1,1], [2,2,2,2,2,2,2,2,2,2],
-        [3,3,3,3,3,3,3,3,3,3], [4,4,4,4,4,4,4,4,4,4],
-        ...separators,
-    ];
+    const allCands = [];
+    (function gen(d, ans) {
+        if (d === Q) { allCands.push(ans.slice()); return; }
+        for (let g = 1; g <= opts[d]; g++) { ans[d] = g; gen(d + 1, ans); }
+    })(0, new Array(Q));
+    const N = allCands.length;
 
-    const capped = patterns.map(p => p.map((v, i) => Math.min(v, opts[i])));
+    const pool = [];
+    const maxO = Math.max(...opts);
+    for (let v = 1; v <= maxO; v++) pool.push(Array(Q).fill(v));
+    for (let m = 2; m <= maxO; m++)
+        for (let o = 0; o < m; o++)
+            pool.push(Array.from({ length: Q }, (_, i) => ((i + o) % m) + 1));
+    for (let b = 1; b <= 5; b++)
+        pool.push(Array.from({ length: Q }, (_, i) => (Math.floor(i / b) % maxO) + 1));
+    for (let s = 0; s < 150; s++)
+        pool.push(Array.from({ length: Q }, (_, j) => ((s * 7 + j * 13 + s * j * 3) % opts[j]) + 1));
+    const sampleStep = Math.max(1, Math.floor(N / 100));
+    for (let i = 0; i < N; i += sampleStep) pool.push(allCands[i]);
+
+    const P = pool.length;
+    const scoreVecs = new Array(P);
+    for (let p = 0; p < P; p++) {
+        scoreVecs[p] = new Uint8Array(N);
+        for (let c = 0; c < N; c++) scoreVecs[p][c] = sc(pool[p], allCands[c]);
+    }
+
+    const probes = [];
+    const curSig = new Int32Array(N);
+    for (let step = 0; step < 6; step++) {
+        let bestPI = -1, bestScore = -1;
+        for (let pi = 0; pi < P; pi++) {
+            const sv = scoreVecs[pi];
+            const g = new Map();
+            for (let c = 0; c < N; c++) {
+                const k = curSig[c] * 11 + sv[c];
+                g.set(k, (g.get(k) || 0) + 1);
+            }
+            let mx = 0;
+            for (const v of g.values()) if (v > mx) mx = v;
+            const s = g.size * 10000 - mx;
+            if (s > bestScore) { bestScore = s; bestPI = pi; }
+        }
+        probes.push(pool[bestPI]);
+        const sv = scoreVecs[bestPI];
+        for (let c = 0; c < N; c++) curSig[c] = curSig[c] * 11 + sv[c];
+    }
+
+    console.log(`⚙️ Probe computation: ${(performance.now() - t0).toFixed(0)}ms, pool=${P}, N=${N}`);
+
+    const capped = probes.map(p => p.map((v, i) => Math.min(v, opts[i])));
     const scores = await Promise.all(capped.map(c => submit(c)));
 
     const perfectIdx = scores.indexOf(Q);
@@ -42,120 +86,60 @@
         capped[perfectIdx].forEach((v, i) => {
             if (radioGroups[i][v - 1]) radioGroups[i][v - 1].checked = true;
         });
-        console.log(`🏆 [${capped[perfectIdx].join(',')}] | ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms (perfect on pattern ${perfectIdx})`);
-        return;
+            console.log(`🏆 [${capped[perfectIdx].join(',')}] | ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms (perfect hit on probe ${perfectIdx})`);
+            return;
     }
 
-    // Phase 2: backtracking solver with MCV ordering + tight per-pattern future bounds
-    function solve(caps, S, limit) {
-        const R = caps.length;
-        const found = [];
-
-        const matchTable = Array.from({length: Q}, (_, qi) => {
-            const byG = {};
-            for (let r = 0; r < R; r++) {
-                const key = caps[r][qi];
-                (byG[key] ??= []).push(r);
-            }
-            return byG;
-        });
-
-        // MCV heuristic: process most-constrained questions first
-        const order = Array.from({length: Q}, (_, i) => i)
-            .sort((a, b) => Object.keys(matchTable[a]).length - Object.keys(matchTable[b]).length);
-        const orderedMatch = order.map(i => matchTable[i]);
-        const orderedOpts = order.map(i => opts[i]);
-
-        // Tight upper bound: exact max future matches per pattern from each depth
-        const maxFuture = Array.from({length: R}, (_, r) => {
-            const arr = new Uint8Array(Q + 1);
-            for (let d = Q - 1; d >= 0; d--) {
-                arr[d] = arr[d + 1] + (caps[r][order[d]] <= orderedOpts[d] ? 1 : 0);
-            }
-            return arr;
-        });
-
-        const cur = new Uint8Array(Q);
-        const counts = new Uint8Array(R);
-
-        (function bt(depth) {
-            if (found.length >= limit) return;
-            if (depth === Q) {
-                for (let r = 0; r < R; r++) if (counts[r] !== S[r]) return;
-                const result = new Array(Q);
-                for (let d = 0; d < Q; d++) result[order[d]] = cur[d];
-                found.push(result);
-                return;
-            }
-            for (let g = 1; g <= orderedOpts[depth]; g++) {
-                cur[depth] = g;
-                const matched = orderedMatch[depth][g] || [];
-                for (let m = 0; m < matched.length; m++) counts[matched[m]]++;
-
-                let ok = true;
-                for (let r = 0; r < R; r++) {
-                    if (counts[r] > S[r] || counts[r] + maxFuture[r][depth + 1] < S[r]) {
-                        ok = false;
-                        break;
-                    }
-                }
-                if (ok) bt(depth + 1);
-
-                for (let m = 0; m < matched.length; m++) counts[matched[m]]--;
-            }
-            cur[depth] = 0;
-        })(0);
-
-        return found;
-    }
-
-    let sols = solve(capped, scores, 10);
+    let sols = allCands.filter(c =>
+    capped.every((p, r) => sc(c, p) === scores[r])
+    );
 
     if (!sols.length) {
-        console.error(`❌ No consistent solution found after ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms — server may be non-deterministic.`);
+        console.error(`❌ No solutions after ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms — server may be non-deterministic.`);
         return;
     }
 
-    // Phase 3: disambiguate with optimal probe selection
-    function bestProbe(sols) {
-        const majority = Array.from({length: Q}, (_, j) => {
-            const freq = {};
-            for (const s of sols) freq[s[j]] = (freq[s[j]] || 0) + 1;
-            return +Object.entries(freq).sort((a, b) => b[1] - a[1])[0][0];
-        });
-
-        const candidates = [...sols, majority];
-        let best = null, bestWorst = Infinity;
-        for (const candidate of candidates) {
-            const groups = {};
-            for (const s of sols) {
-                let c = 0;
-                for (let j = 0; j < Q; j++) if (candidate[j] === s[j]) c++;
-                groups[c] = (groups[c] || 0) + 1;
-            }
-            const worst = Math.max(...Object.values(groups));
-            if (worst < bestWorst) { bestWorst = worst; best = candidate; }
-        }
-        return best.map((v, i) => Math.min(v, opts[i]));
-    }
+    console.log(`🔍 ${sols.length} candidate(s) after 6 probes`);
 
     while (sols.length > 1) {
-        const cp = bestProbe(sols);
-        const ds = await submit(cp);
-        sols = sols.filter(s => {
-            let c = 0;
-            for (let j = 0; j < Q; j++) if (cp[j] === s[j]) c++;
-            return c === ds;
-        });
+        let bestP = null, bestW = sols.length;
+        for (const p of allCands) {
+            const seen = new Set();
+            let dup = false;
+            for (const c of sols) {
+                const s = sc(c, p);
+                if (seen.has(s)) { dup = true; break; }
+                seen.add(s);
+            }
+            if (!dup) { bestP = p; bestW = 1; break; }
+        }
+
+        if (bestW > 1) {
+            for (const p of allCands) {
+                const g = {};
+                for (const c of sols) { const s = sc(c, p); g[s] = (g[s] || 0) + 1; }
+                const w = Math.max(...Object.values(g));
+                if (w < bestW) { bestW = w; bestP = p; }
+            }
+        }
+
+        const dp = bestP.map((v, i) => Math.min(v, opts[i]));
+        const ds = await submit(dp);
+        sols = sols.filter(c => sc(c, dp) === ds);
+
         if (!sols.length) {
-            console.error(`❌ Disambiguation failed — no solutions remain after ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms`);
+            console.error(`❌ Disambiguation failed after ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms`);
             return;
         }
+        console.log(`🔍 ${sols.length} candidate(s) remain after disambiguator`);
     }
 
-    sols[0].forEach((v, i) => {
+    const answer = sols[0];
+    const finalScore = await submit(answer);
+
+    answer.forEach((v, i) => {
         if (radioGroups[i][v - 1]) radioGroups[i][v - 1].checked = true;
     });
 
-    console.log(`🏆 [${sols[0].join(',')}] | ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms`);
+        console.log(`🏆 [${answer.join(',')}] score=${finalScore * 10}% | ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms`);
 })();
