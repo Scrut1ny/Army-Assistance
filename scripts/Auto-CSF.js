@@ -5,9 +5,11 @@
     const t0 = performance.now();
     let reqs = 0;
 
-    const opts = Array.from({length: Q}, (_, i) =>
-        form.querySelectorAll(`input[name="selAnswer${i}"]`).length
+    // Cache all DOM radio groups once upfront
+    const radioGroups = Array.from({length: Q}, (_, i) =>
+        form.querySelectorAll(`input[name="selAnswer${i}"]`)
     );
+    const opts = radioGroups.map(r => r.length);
 
     async function submit(ans) {
         reqs++;
@@ -18,15 +20,19 @@
             credentials: 'include'
         });
         const m = (await r.text()).match(/score of (\d+)%/);
-        return m ? parseInt(m[1]) / 10 : -1;
+        return m ? +m[1] / 10 : -1;
     }
 
-    // Phase 1: 7 strategic patterns (4 baselines + 3 binary separators)
+    // Phase 1: 4 baselines + 4 Hadamard-orthogonal binary separators
+    const separators = [];
+    for (let bit = 0; bit < Math.ceil(Math.log2(Q)); bit++) {
+        separators.push(Array.from({length: Q}, (_, i) => ((i >> bit) & 1) + 1));
+    }
+
     const patterns = [
         [1,1,1,1,1,1,1,1,1,1], [2,2,2,2,2,2,2,2,2,2],
         [3,3,3,3,3,3,3,3,3,3], [4,4,4,4,4,4,4,4,4,4],
-        [1,2,1,2,1,1,2,2,1,2], [1,1,2,2,1,2,1,2,2,1],
-        [1,1,1,1,2,2,2,2,1,1],
+        ...separators,
     ];
 
     const capped = patterns.map(p => p.map((v, i) => Math.min(v, opts[i])));
@@ -36,18 +42,31 @@
     const perfectIdx = scores.indexOf(Q);
     if (perfectIdx !== -1) {
         capped[perfectIdx].forEach((v, i) => {
-            const r = form.querySelectorAll(`input[name="selAnswer${i}"]`);
-            if (r[v - 1]) r[v - 1].checked = true;
+            if (radioGroups[i][v - 1]) radioGroups[i][v - 1].checked = true;
         });
         console.log(`🏆 [${capped[perfectIdx].join(',')}] | ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms (perfect on pattern ${perfectIdx})`);
         return;
     }
 
-    // Phase 2: backtracking solver with incremental match counting
+    // Phase 2: backtracking solver with in-place mutation + precomputed match table
     function solve(caps, S, limit) {
         const R = caps.length;
         const found = [];
-        (function bt(qi, cur, counts) {
+
+        // Precompute: matchTable[qi][g] = array of pattern indices where caps[r][qi] === g
+        const matchTable = Array.from({length: Q}, (_, qi) => {
+            const byG = {};
+            for (let r = 0; r < R; r++) {
+                const key = caps[r][qi];
+                (byG[key] ??= []).push(r);
+            }
+            return byG;
+        });
+
+        const cur = new Uint8Array(Q);
+        const counts = new Uint8Array(R);
+
+        (function bt(qi) {
             if (found.length >= limit) return;
             if (qi === Q) {
                 for (let r = 0; r < R; r++) if (counts[r] !== S[r]) return;
@@ -57,21 +76,31 @@
             const remaining = Q - qi - 1;
             for (let g = 1; g <= opts[qi]; g++) {
                 cur[qi] = g;
+                const matched = matchTable[qi][g] || [];
+
+                // Check upper bound for matched patterns
                 let ok = true;
+                for (let m = 0; m < matched.length; m++) {
+                    if (counts[matched[m]] + 1 > S[matched[m]]) { ok = false; break; }
+                }
+                if (!ok) continue;
+
+                // Check lower bound (remaining feasibility) for ALL patterns
                 for (let r = 0; r < R; r++) {
-                    const nc = counts[r] + (caps[r][qi] === g ? 1 : 0);
-                    if (nc > S[r] || nc + remaining < S[r]) { ok = false; break; }
+                    const inc = matched.indexOf(r) !== -1 ? 1 : 0;
+                    if (counts[r] + inc + remaining < S[r]) { ok = false; break; }
                 }
-                if (ok) {
-                    const newCounts = new Uint8Array(counts);
-                    for (let r = 0; r < R; r++) {
-                        if (caps[r][qi] === g) newCounts[r]++;
-                    }
-                    bt(qi + 1, cur, newCounts);
-                }
+                if (!ok) continue;
+
+                // Mutate in-place
+                for (let m = 0; m < matched.length; m++) counts[matched[m]]++;
+                bt(qi + 1);
+                // Undo
+                for (let m = 0; m < matched.length; m++) counts[matched[m]]--;
             }
             cur[qi] = 0;
-        })(0, new Uint8Array(Q), new Uint8Array(capped.length));
+        })(0);
+
         return found;
     }
 
@@ -82,10 +111,18 @@
         return;
     }
 
-    // Phase 3: disambiguate with optimal probe selection
+    // Phase 3: disambiguate with optimal probe selection (includes synthetic majority-vote probe)
     function bestProbe(sols) {
+        // Build a majority-vote synthetic probe
+        const majority = Array.from({length: Q}, (_, j) => {
+            const freq = {};
+            for (const s of sols) freq[s[j]] = (freq[s[j]] || 0) + 1;
+            return +Object.entries(freq).sort((a, b) => b[1] - a[1])[0][0];
+        });
+
+        const candidates = [...sols, majority];
         let best = null, bestWorst = Infinity;
-        for (const candidate of sols) {
+        for (const candidate of candidates) {
             const groups = {};
             for (const s of sols) {
                 let c = 0;
@@ -114,8 +151,7 @@
 
     // Auto-fill and done
     sols[0].forEach((v, i) => {
-        const r = form.querySelectorAll(`input[name="selAnswer${i}"]`);
-        if (r[v - 1]) r[v - 1].checked = true;
+        if (radioGroups[i][v - 1]) radioGroups[i][v - 1].checked = true;
     });
 
     console.log(`🏆 [${sols[0].join(',')}] | ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms`);
