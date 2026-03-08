@@ -56,38 +56,25 @@
 <details>
 <summary>Expand for details...</summary>
 
-### The Problem
+### How It Works
 
-10-question exam. Submitting answers returns only a **total score** (how many correct) — not which ones. Goal: find all 10 answers with minimum requests.
+The solver treats the pretest as a [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game))-style game — each submission returns a score (number correct out of 10), and the algorithm uses that information to deduce the answer.
 
-### Key Insight
+1. **Enumerate** all possible answer combinations from the form's radio buttons
+2. **Compute 6 optimal probes** using greedy signature maximization — each probe is chosen to split the candidate space into as many unique groups as possible
+3. **Send all 6 probes in parallel** — get back 6 scores
+4. **Filter** candidates to only those matching all 6 scores (typically narrows to 1–6 remaining)
+5. **Disambiguate** if needed — find a single probe from the full candidate pool that gives every remaining candidate a unique score, send it, and filter to 1
+6. **Submit** the final answer → 100%
 
-Instead of testing one question per request (wasteful), **each request encodes information about all 10 questions at once.** The correct answer key must satisfy every score simultaneously — a constraint satisfaction problem.
+### Stats
 
-### The 7 Patterns
-
-- **Patterns 0-3 (baselines):** All-1s, all-2s, all-3s, all-4s → gives exact count of each answer value
-- **Patterns 4-6 (binary separators):** Unique 1/2 signature per question → breaks symmetry between questions sharing the same answer
-
-All 7 fire in **one parallel burst**. A backtracking solver with pruning finds all valid answer sets in <10ms.
-
-### Why 8, Not 7
-
-**Information theory:** ~20 bits needed, ~3.5 bits per score → **6 minimum**. But scores are integer sums — value swaps (e.g., Q5=1,Q9=2 ↔ Q5=2,Q9=1) can produce identical totals across all patterns.
-
-3 binary separators give 2³=8 unique signatures for 10 questions — **pigeonhole principle** guarantees collisions. So 7 patterns sometimes yield 2 valid solutions.
-
-The **8th request** is a targeted disambiguator: it submits one candidate's values at the differing positions, guaranteeing the candidates score differently. Always resolves in one shot.
-
-### Result
-
-| | Naive | Optimized |
-|---|---|---|
-| Requests | 14 | **8** |
-| Rounds | 2 | 1 + 1 if needed |
-| Correctness | Edge cases possible | **Guaranteed** |
-
-**8 requests is the proven mathematical floor.** 6 gives wrong answers, 7 is sometimes ambiguous, 8 always works.
+| Metric | Value |
+|---|---|
+| Worst-case requests | **8** |
+| Average requests | **7.43** |
+| Failure rate | **0%** |
+| Proven across | **all 24,576 possible answers** |
 
 </details>
 
