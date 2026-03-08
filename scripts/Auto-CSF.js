@@ -5,7 +5,6 @@
     const t0 = performance.now();
     let reqs = 0;
 
-    // Cache all DOM radio groups once upfront
     const radioGroups = Array.from({length: Q}, (_, i) =>
         form.querySelectorAll(`input[name="selAnswer${i}"]`)
     );
@@ -23,7 +22,7 @@
         return m ? +m[1] / 10 : -1;
     }
 
-    // Phase 1: 4 baselines + Hadamard-orthogonal binary separators
+    // Phase 1: uniform baselines + Hadamard-orthogonal binary separators
     const separators = [];
     for (let bit = 0; bit < Math.ceil(Math.log2(Q)); bit++) {
         separators.push(Array.from({length: Q}, (_, i) => ((i >> bit) & 1) + 1));
@@ -38,7 +37,6 @@
     const capped = patterns.map(p => p.map((v, i) => Math.min(v, opts[i])));
     const scores = await Promise.all(capped.map(c => submit(c)));
 
-    // Early exit: if any pattern scored 100%, it's already the answer
     const perfectIdx = scores.indexOf(Q);
     if (perfectIdx !== -1) {
         capped[perfectIdx].forEach((v, i) => {
@@ -48,12 +46,11 @@
         return;
     }
 
-    // Phase 2: backtracking solver with in-place mutation + precomputed match table
+    // Phase 2: backtracking solver with MCV ordering + tight per-pattern future bounds
     function solve(caps, S, limit) {
         const R = caps.length;
         const found = [];
 
-        // Precompute: matchTable[qi][g] = array of pattern indices where caps[r][qi] === g
         const matchTable = Array.from({length: Q}, (_, qi) => {
             const byG = {};
             for (let r = 0; r < R; r++) {
@@ -63,36 +60,50 @@
             return byG;
         });
 
+        // MCV heuristic: process most-constrained questions first
+        const order = Array.from({length: Q}, (_, i) => i)
+            .sort((a, b) => Object.keys(matchTable[a]).length - Object.keys(matchTable[b]).length);
+        const orderedMatch = order.map(i => matchTable[i]);
+        const orderedOpts = order.map(i => opts[i]);
+
+        // Tight upper bound: exact max future matches per pattern from each depth
+        const maxFuture = Array.from({length: R}, (_, r) => {
+            const arr = new Uint8Array(Q + 1);
+            for (let d = Q - 1; d >= 0; d--) {
+                arr[d] = arr[d + 1] + (caps[r][order[d]] <= orderedOpts[d] ? 1 : 0);
+            }
+            return arr;
+        });
+
         const cur = new Uint8Array(Q);
         const counts = new Uint8Array(R);
 
-        (function bt(qi) {
+        (function bt(depth) {
             if (found.length >= limit) return;
-            if (qi === Q) {
+            if (depth === Q) {
                 for (let r = 0; r < R; r++) if (counts[r] !== S[r]) return;
-                found.push([...cur]);
+                const result = new Array(Q);
+                for (let d = 0; d < Q; d++) result[order[d]] = cur[d];
+                found.push(result);
                 return;
             }
-            const remaining = Q - qi - 1;
-            for (let g = 1; g <= opts[qi]; g++) {
-                cur[qi] = g;
-                const matched = matchTable[qi][g] || [];
-
-                // Increment in-place
+            for (let g = 1; g <= orderedOpts[depth]; g++) {
+                cur[depth] = g;
+                const matched = orderedMatch[depth][g] || [];
                 for (let m = 0; m < matched.length; m++) counts[matched[m]]++;
 
-                // Check both bounds in a single O(R) pass
                 let ok = true;
                 for (let r = 0; r < R; r++) {
-                    if (counts[r] > S[r] || counts[r] + remaining < S[r]) { ok = false; break; }
+                    if (counts[r] > S[r] || counts[r] + maxFuture[r][depth + 1] < S[r]) {
+                        ok = false;
+                        break;
+                    }
                 }
+                if (ok) bt(depth + 1);
 
-                if (ok) bt(qi + 1);
-
-                // Undo
                 for (let m = 0; m < matched.length; m++) counts[matched[m]]--;
             }
-            cur[qi] = 0;
+            cur[depth] = 0;
         })(0);
 
         return found;
@@ -105,7 +116,7 @@
         return;
     }
 
-    // Phase 3: disambiguate with optimal probe selection (includes synthetic majority-vote probe)
+    // Phase 3: disambiguate with optimal probe selection
     function bestProbe(sols) {
         const majority = Array.from({length: Q}, (_, j) => {
             const freq = {};
@@ -142,7 +153,6 @@
         }
     }
 
-    // Auto-fill and done
     sols[0].forEach((v, i) => {
         if (radioGroups[i][v - 1]) radioGroups[i][v - 1].checked = true;
     });
