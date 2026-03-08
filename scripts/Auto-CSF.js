@@ -23,7 +23,7 @@
         return m ? +m[1] / 10 : -1;
     }
 
-    // Phase 1: 4 baselines + 4 Hadamard-orthogonal binary separators
+    // Phase 1: 4 baselines + Hadamard-orthogonal binary separators
     const separators = [];
     for (let bit = 0; bit < Math.ceil(Math.log2(Q)); bit++) {
         separators.push(Array.from({length: Q}, (_, i) => ((i >> bit) & 1) + 1));
@@ -78,23 +78,17 @@
                 cur[qi] = g;
                 const matched = matchTable[qi][g] || [];
 
-                // Check upper bound for matched patterns
-                let ok = true;
-                for (let m = 0; m < matched.length; m++) {
-                    if (counts[matched[m]] + 1 > S[matched[m]]) { ok = false; break; }
-                }
-                if (!ok) continue;
-
-                // Check lower bound (remaining feasibility) for ALL patterns
-                for (let r = 0; r < R; r++) {
-                    const inc = matched.indexOf(r) !== -1 ? 1 : 0;
-                    if (counts[r] + inc + remaining < S[r]) { ok = false; break; }
-                }
-                if (!ok) continue;
-
-                // Mutate in-place
+                // Increment in-place
                 for (let m = 0; m < matched.length; m++) counts[matched[m]]++;
-                bt(qi + 1);
+
+                // Check both bounds in a single O(R) pass
+                let ok = true;
+                for (let r = 0; r < R; r++) {
+                    if (counts[r] > S[r] || counts[r] + remaining < S[r]) { ok = false; break; }
+                }
+
+                if (ok) bt(qi + 1);
+
                 // Undo
                 for (let m = 0; m < matched.length; m++) counts[matched[m]]--;
             }
@@ -113,7 +107,6 @@
 
     // Phase 3: disambiguate with optimal probe selection (includes synthetic majority-vote probe)
     function bestProbe(sols) {
-        // Build a majority-vote synthetic probe
         const majority = Array.from({length: Q}, (_, j) => {
             const freq = {};
             for (const s of sols) freq[s[j]] = (freq[s[j]] || 0) + 1;
