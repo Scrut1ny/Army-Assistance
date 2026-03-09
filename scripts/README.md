@@ -350,8 +350,8 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
 
 ```js
 (function p() {
-    if (typeof DS === 'undefined' || !DS.slidesController) return setTimeout(p, 1000);
-    var l = '', t, r = function() {
+    if (typeof DS === 'undefined') return setTimeout(p, 1e3);
+    var l = '', r = function() {
         var el = document.querySelector('input[data-represents]');
         if (!el) return;
         var id = el.dataset.represents.split('.').slice(0, 4).join('.');
@@ -359,20 +359,32 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
         var s = DS.slidesController.getSlide(id);
         if (!s || !s.attributes.interactions) return;
         l = id;
-        s.attributes.interactions.models.forEach(function(m) {
-            (m.attributes.answers || []).forEach(function(a) {
-                if (a.status !== 'correct') return;
-                var c = [];
-                if (a.evaluate && a.evaluate.statements)
-                    a.evaluate.statements.forEach(function(s) { if (s.choiceid) c.push(s.choiceid.replace('choices.choice_', '')); });
-                (c.length ? c : [a.id]).forEach(function(i) { var e = document.getElementById('acc-' + i); if (e) e.click(); });
+        s.attributes.interactions.models[0].attributes.answers.forEach(function(a) {
+            if (a.status !== 'correct') return;
+            var ids = [];
+            a.evaluate.statements.forEach(function(s) {
+                if (s.choiceid) ids.push(s.choiceid.replace('choices.choice_', ''));
+            });
+            (ids.length ? ids : [a.id]).forEach(function(i) {
+                var e = document.getElementById('acc-' + i);
+                if (e) e.click();
             });
         });
-        setTimeout(function() { var b = document.querySelector('button.acc-button[aria-label*="submit"], button.acc-button[aria-label*="Submit"]'); if (!b) { document.querySelectorAll('button.acc-button').forEach(function(el) { if (/submit/i.test(el.textContent)) b = el; }); } if (b) b.click(); }, 50);
-        setTimeout(function() { var b = document.querySelector('button.acc-button[aria-label*="continue"], button.acc-button[aria-label*="Continue"]'); if (b) b.click(); }, 100);
+        setTimeout(function() {
+            document.querySelectorAll('button.acc-button').forEach(function(b) {
+                if (/submit/i.test(b.textContent)) b.click();
+            });
+        }, 50);
+        setTimeout(function() {
+            var b = document.querySelector('[aria-label*="ontinue"]');
+            if (b) b.click();
+        }, 100);
     };
-    new MutationObserver(function() { clearTimeout(t); t = setTimeout(r, 0); })
-        .observe(document.getElementById('slide-window') || document.body, { childList: true, subtree: true });
+    var t;
+    new MutationObserver(function() {
+        clearTimeout(t);
+        t = setTimeout(r, 0);
+    }).observe(document.getElementById('slide-window') || document.body, { childList: true, subtree: true });
     r();
 })();
 ```
