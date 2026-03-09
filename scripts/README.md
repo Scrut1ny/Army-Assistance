@@ -347,4 +347,10 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
 (() => { const n=course.navigator; n._topics.forEach(t=>t.forEach(x=>{if(x.pages)x.pages.forEach(p=>{p._visited=p._completed=p.visited=p.completed=true;p.roadblock=false})})); n._currentLessonNum=4; n.openTopic(4,1); setTimeout(()=>n.openPage('next'),2000); })();
 ```
 
+- [https://securityawareness.dcsa.mil/cybersecurity/content/Block10/Introduction/page_0010.html](https://securityawareness.dcsa.mil/cybersecurity/content/Block10/Introduction/page_0010.html)
+```js
+// Run from inside the course (any page_XXXX.html)
+window.location.href = 'page_0300.html';
+```
+
 </details>
