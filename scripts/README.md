@@ -368,8 +368,8 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
                 (c.length ? c : [a.id]).forEach(function(i) { var e = document.getElementById('acc-' + i); if (e) e.click(); });
             });
         });
-        setTimeout(function() { var b = document.querySelector('[aria-label*="submit"]'); if (b) b.click(); }, 0);
-        setTimeout(function() { var b = document.querySelector('[aria-label*="continue"]'); if (b) b.click(); }, 50);
+        setTimeout(function() { var b = document.querySelector('button.acc-button[aria-label*="submit"], button.acc-button[aria-label*="Submit"]'); if (!b) { document.querySelectorAll('button.acc-button').forEach(function(el) { if (/submit/i.test(el.textContent)) b = el; }); } if (b) b.click(); }, 50);
+        setTimeout(function() { var b = document.querySelector('button.acc-button[aria-label*="continue"], button.acc-button[aria-label*="Continue"]'); if (b) b.click(); }, 100);
     };
     new MutationObserver(function() { clearTimeout(t); t = setTimeout(r, 0); })
         .observe(document.getElementById('slide-window') || document.body, { childList: true, subtree: true });
