@@ -137,7 +137,7 @@ The theoretical minimum is ⌈15.75 / log₂(11)⌉ = **5 probes** at maximum en
 
 ```js
 // =============================================
-// DCSA Universal Certificate Generator v8.0
+// DCSA Universal Certificate Generator v9.0
 // Paste on any course home page (index.htm/html)
 // =============================================
 // CONFIG:
@@ -172,7 +172,7 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
     // TYPE A: Storyline + pdfMake (savePDF.js with base64 image)
     // ============================================================
     async function tryTypeA() {
-        const subfolders = ['quiz', ''];
+        const subfolders = ['quiz', 'content/quiz', ''];
         for (const sub of subfolders) {
             const prefix = sub ? `/${slug}/${sub}` : `/${slug}`;
             try {
@@ -238,10 +238,10 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
             background: certImage ? () => [{ image: 'cert', alignment: 'center', width: 800 }] : undefined,
             content: [
                 { text: 'This is to certify that', fontSize: 16, alignment: 'center', margin: [0, -80] },
-                { text: CERT_NAME,                  fontSize: 36, alignment: 'center', margin: [0, 90]  },
-                { text: 'has completed',            fontSize: 16, alignment: 'center', margin: [0, -80] },
-                { text: title,                      fontSize: 24, alignment: 'center', margin: [0, 90]  },
-                { text: dateFormatted,              fontSize: 16, alignment: 'center', margin: [0, -40] },
+                { text: CERT_NAME,                 fontSize: 36, alignment: 'center', margin: [0, 90]  },
+                { text: 'has completed',           fontSize: 16, alignment: 'center', margin: [0, -80] },
+                { text: title,                     fontSize: 24, alignment: 'center', margin: [0, 90]  },
+                { text: dateFormatted,             fontSize: 16, alignment: 'center', margin: [0, -40] },
             ],
             images: certImage ? { cert: certImage } : undefined,
         })[CERT_ACTION === 'print' ? 'print' : 'download'](`${title} Certificate.pdf`);
@@ -258,7 +258,6 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
             await loadScript(`${typeBPath}/js/libs/jspdf-1.3.2.min.js`);
         }
 
-        // Replicate the CertificateWidget.createPDF logic
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         const img = new Image();
@@ -274,7 +273,6 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
             ctx.font = 'bold 12px Arial';
             ctx.fillText(dateShort, img.width / 2, 466);
 
-            // Generate verification code (simplified from getX)
             const names = CERT_NAME.split(' ');
             const mn = String(d.getMonth() + 1).padStart(2, '0');
             const dy = String(d.getDate()).padStart(2, '0');
