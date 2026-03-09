@@ -137,7 +137,7 @@ The theoretical minimum is ⌈15.75 / log₂(11)⌉ = **5 probes** at maximum en
 
 ```js
 // =============================================
-// DCSA Universal Certificate Generator v9.0
+// DCSA Universal Certificate Generator v10.0
 // Paste on any course home page (index.htm/html)
 // =============================================
 // CONFIG:
@@ -170,14 +170,25 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
 
     // ============================================================
     // TYPE A: Storyline + pdfMake (savePDF.js with base64 image)
+    //   - Per-course: story_content/external_files/
+    //   - Centralized framework: /framework/v2.0/
     // ============================================================
     async function tryTypeA() {
+        // Per-course paths (older courses)
         const subfolders = ['quiz', 'content/quiz', ''];
         for (const sub of subfolders) {
             const prefix = sub ? `/${slug}/${sub}` : `/${slug}`;
             try {
                 const r = await fetch(`${prefix}/story_content/external_files/savePDF.js`, { method: 'HEAD' });
-                if (r.ok) return prefix;
+                if (r.ok) return { pdfBase: prefix + '/story_content/external_files', certBase: prefix + '/story_content/external_files' };
+            } catch {}
+        }
+        // Centralized framework path (newer courses)
+        const fwPaths = ['/framework/v2.0', '/framework/external_v1.0'];
+        for (const fw of fwPaths) {
+            try {
+                const r = await fetch(`${fw}/savePDF.js`, { method: 'HEAD' });
+                if (r.ok) return { pdfBase: fw, certBase: fw };
             } catch {}
         }
         return null;
@@ -217,17 +228,17 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
     // --- Try all three types ---
     console.log('[AutoCert] Detecting certificate type...');
 
-    const typeAPath = await tryTypeA();
-    if (typeAPath) {
-        console.log(`[AutoCert] Type A (pdfMake) detected at ${typeAPath}/`);
+    const typeA = await tryTypeA();
+    if (typeA) {
+        console.log(`[AutoCert] Type A (pdfMake) detected at ${typeA.pdfBase}/`);
 
         if (typeof pdfMake === 'undefined') {
             console.log('[AutoCert] Loading pdfMake...');
-            await loadScript(`${typeAPath}/story_content/external_files/pdfmake.min.js`);
-            await loadScript(`${typeAPath}/story_content/external_files/vfs_fonts.js`);
+            await loadScript(`${typeA.pdfBase}/pdfmake.min.js`);
+            await loadScript(`${typeA.pdfBase}/vfs_fonts.js`);
         }
 
-        const r = await fetch(`${typeAPath}/story_content/external_files/savePDF.js`);
+        const r = await fetch(`${typeA.certBase}/savePDF.js`);
         const certImage = (await r.text()).match(/(data:image\/[a-z]+;base64,[A-Za-z0-9+/=]+)/)?.[1] ?? null;
 
         pdfMake.createPdf({
@@ -238,10 +249,10 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
             background: certImage ? () => [{ image: 'cert', alignment: 'center', width: 800 }] : undefined,
             content: [
                 { text: 'This is to certify that', fontSize: 16, alignment: 'center', margin: [0, -80] },
-                { text: CERT_NAME,                 fontSize: 36, alignment: 'center', margin: [0, 90]  },
-                { text: 'has completed',           fontSize: 16, alignment: 'center', margin: [0, -80] },
-                { text: title,                     fontSize: 24, alignment: 'center', margin: [0, 90]  },
-                { text: dateFormatted,             fontSize: 16, alignment: 'center', margin: [0, -40] },
+                { text: CERT_NAME,                  fontSize: 36, alignment: 'center', margin: [0, 90]  },
+                { text: 'has completed',            fontSize: 16, alignment: 'center', margin: [0, -80] },
+                { text: title,                      fontSize: 24, alignment: 'center', margin: [0, 90]  },
+                { text: dateFormatted,              fontSize: 16, alignment: 'center', margin: [0, -40] },
             ],
             images: certImage ? { cert: certImage } : undefined,
         })[CERT_ACTION === 'print' ? 'print' : 'download'](`${title} Certificate.pdf`);
