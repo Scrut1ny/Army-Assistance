@@ -375,7 +375,18 @@ window.location.href = 'page_0300.html';
     - [https://securityawareness.dcsa.mil/piiv2/content/index.html](https://securityawareness.dcsa.mil/piiv2/content/index.html)
 ```js
 // Skip directly to the PII certificate page
-(() => { const n=course.navigator; n._topics.forEach(t=>t.forEach(x=>{if(x.pages)x.pages.forEach(p=>{p._visited=p._completed=p.visited=p.completed=true;p.roadblock=false})})); n._currentLessonNum=4; n.openTopic(4,1); setTimeout(()=>n.openPage('next'),2000); })();
+(() => {
+    const n = course.navigator;
+    n._topics.forEach(t => t.forEach(x => {
+        if (x.pages) x.pages.forEach(p => {
+            p._visited = p._completed = p.visited = p.completed = true;
+            p.roadblock = false
+        })
+    }));
+    n._currentLessonNum = 4;
+    n.openTopic(4, 1);
+    setTimeout(() => n.openPage('next'), 2000);
+})();
 ```
 
 </details>
