@@ -221,7 +221,7 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
 })();
 ```
 
-- [🥈] Auto answers all 20 questions for the final assessment
+- [🥈] Auto answers all final assessment questions
 ```js
 (function p() {
     if (typeof DS === 'undefined' || !DS.slidesController) return setTimeout(p, 1000);
