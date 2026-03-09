@@ -1,14 +1,4 @@
 (async () => {
-    // CSF Pretest Solver
-    // Determines correct answers via information-theoretic probing.
-    // Sends 7 parallel scoring requests, filters 55,296 candidate answer
-    // combinations by returned scores, and disambiguates if needed.
-    //
-    // Performance: ~66ms compute, 7–8 HTTP requests, 100% accuracy.
-    // Theoretical basis: 15.75 bits of entropy required (log2(55296)),
-    // 7 probes yield 15.45 bits — sufficient for unique identification
-    // in 74% of cases, with at most 1 disambiguation round otherwise.
-
     const SUBMIT_URL = 'https://cs.signal.army.mil/UserMngmt/CyberFundamentals/lessons/CsfPretestSubmit.asp';
     const form = document.querySelector('form[name="CSFpretest"]');
     const Q = 10;
@@ -24,7 +14,6 @@
     const N = opts.reduce((a, b) => a * b, 1);
     const maxO = Math.max(...opts);
 
-    // Submit an answer vector and parse the returned score (0–10 correct).
     async function submit(ans) {
         reqs++;
         const r = await fetch(SUBMIT_URL, {
@@ -37,7 +26,6 @@
         return m ? +m[1] / 10 : -1;
     }
 
-    // Populate radio buttons with the solved answer and log results.
     function finish(answer, note) {
         answer.forEach((v, i) => {
             if (radioGroups[i][v - 1]) radioGroups[i][v - 1].checked = true;
@@ -45,9 +33,7 @@
         console.log(`🏆 [${answer}] | ${reqs} reqs, ${(performance.now() - t0).toFixed(0)}ms ${note || ''}`);
     }
 
-    // ── Candidate Enumeration ───────────────────────────────────────────
-    // Flat Uint8Array layout: candidate c, question q → flat[c * Q + q].
-    // Contiguous memory for cache-efficient scoring (~0.5MB).
+    // ── Phase 0: Enumerate Candidates ───────────────────────────────────
     const flat = new Uint8Array(N * Q);
     let fi = 0;
     (function gen(d, ans) {
@@ -55,10 +41,7 @@
         for (let g = 1; g <= opts[d]; g++) { ans[d] = g; gen(d + 1, ans); }
     })(0, new Uint8Array(Q));
 
-    // ── Probe Pool Construction ───────────────��─────────────────────────
-    // 59 diverse probe vectors: constant fills, cyclic shifts, block
-    // patterns, hash-derived sequences, and uniform candidate samples.
-    // Empirically validated to match pools 5x larger in partition quality.
+    // ── Phase 1a: Build Probe Pool ──────────────────────────────────────
     const pool = [];
     for (let v = 1; v <= maxO; v++)
         pool.push(new Uint8Array(Array(Q).fill(v)));
@@ -74,10 +57,7 @@
         pool.push(flat.slice(i * Q, i * Q + Q));
     const P = pool.length;
 
-    // ── Score Vector Precomputation ─────────────────────────────────────
-    // For each probe p, scoreVecs[p][c] = number of matching positions
-    // between probe p and candidate c. Unrolled 10-wide comparison
-    // eliminates inner loop overhead (2.5x faster than indexed loop).
+    // ── Phase 1b: Precompute Score Vectors ──────────────────────────────
     const scoreVecs = new Array(P);
     for (let p = 0; p < P; p++) {
         const pr = pool[p];
@@ -94,11 +74,7 @@
         scoreVecs[p] = sv;
     }
 
-    // ── Greedy Probe Selection ──────────────────────────────────────────
-    // Iteratively selects the probe that maximizes partition refinement.
-    // Scoring: max(distinct_signatures * 10000 - largest_partition_size).
-    // Uses typed-array bucket counting with tracked-index cleanup for
-    // O(N) evaluation per probe (40x faster than Map-based approach).
+    // ── Phase 1c: Select Optimal Probes ─────────────────────────────────
     const maxBucket = N * 11 + 11;
     const buckets = new Uint32Array(maxBucket);
     const tch = new Uint32Array(maxBucket);
@@ -137,19 +113,14 @@
 
     console.log(`⚙️ Compute: ${(performance.now() - t0).toFixed(0)}ms | pool=${P}, N=${N}`);
 
-    // ── Parallel Probe Submission ───────────────────────────────────────
-    // Clamp probe values to valid option ranges, then fire all 7
-    // concurrently. A score of 10 on any probe is an immediate solve.
+    // ── Phase 2: Submit Probes ──────────────────────────────────────────
     const capped = probes.map(p => Array.from(p, (v, i) => Math.min(v, opts[i])));
     const scores = await Promise.all(capped.map(c => submit(c)));
 
     const perfectIdx = scores.indexOf(Q);
     if (perfectIdx !== -1) return finish(capped[perfectIdx], '(probe hit)');
 
-    // ── Candidate Filtering ─────────────────────────────────────────────
-    // Retain only candidates whose score against every probe matches
-    // the server's returned scores. With 7 probes this typically
-    // yields exactly 1 candidate (74.2%) or 2–6 candidates (25.8%).
+    // ── Phase 3: Filter Candidates ──────────────────────────────────────
     let sols = [];
     for (let c = 0; c < N; c++) {
         let match = true;
@@ -167,12 +138,7 @@
 
     if (!sols.length) return console.error('❌ No candidates — server may be non-deterministic');
 
-    // ── Disambiguation ──────────────────────────────────────────────────
-    // When multiple candidates remain, find a probe that assigns each
-    // a unique score, resolving ambiguity in a single request. Searches
-    // remaining candidates first (98.5% success), then falls back to a
-    // full candidate scan (median index: 1, worst case: 259).
-    // Final verification is skipped — proven safe across all 55,296 inputs.
+    // ── Phase 4: Disambiguate ───────────────────────────────────────────
     while (sols.length > 1) {
         let bestP = -1;
         for (const p of sols) {
@@ -214,8 +180,7 @@
         if (!sols.length) return console.error('❌ Disambiguation failed');
     }
 
-    // ── Result ──────────────────────────────────────────────────────────
-    // Single candidate remains — fill form directly without verification.
+    // ── Phase 5: Populate Form ──────────────────────────────────────────
     const ansOff = sols[0] * Q;
     finish(Array.from({ length: Q }, (_, i) => flat[ansOff + i]));
 })();
