@@ -265,7 +265,7 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
                 { text: dateFormatted,              fontSize: 16, alignment: 'center', margin: [0, -40] },
             ],
             images: certImage ? { cert: certImage } : undefined,
-        })[CERT_ACTION === 'print' ? 'print' : 'download'](`${title} Certificate.pdf`);
+        })[CERT_ACTION === 'print' ? 'print' : 'download'](`${title}.pdf`);
 
         console.log(`[AutoCert] ✅ Certificate generated (Type A - pdfMake)`);
         return;
