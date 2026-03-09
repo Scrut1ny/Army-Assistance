@@ -130,6 +130,8 @@ The theoretical minimum is ⌈15.75 / log₂(11)⌉ = **5 probes** at maximum en
 <details>
 <summary>Expand for details...</summary>
 
+---
+
 - [🥇] Print certificate instantly
 
 <details>
