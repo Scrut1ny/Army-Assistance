@@ -3,6 +3,8 @@
 <details>
 <summary>Expand for details...</summary>
 
+---
+
 - [🥇] Skip to "Congratulations" page.
 ```js
 // https://cs.signal.army.mil/usermngmt/cyberend.asp
@@ -42,6 +44,8 @@
 })();
 ```
 
+---
+
 </details>
 
 
@@ -55,6 +59,8 @@
 
 <details>
 <summary>Expand for details...</summary>
+
+---
 
 ### Overview
 
@@ -115,6 +121,8 @@ The theoretical minimum is ⌈15.75 / log₂(11)⌉ = **5 probes** at maximum en
 2. Open browser DevTools (`F12` → Console).
 3. Paste and execute the script.
 4. The form is populated automatically — click Submit.
+
+---
 
 </details>
 
@@ -324,6 +332,8 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
 })();
 ```
 
+---
+
 </details>
 
 
@@ -335,6 +345,8 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
 
 <details>
 <summary>Expand to view...</summary>
+
+---
 
 ```js
 (function p() {
@@ -364,6 +376,8 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
     r();
 })();
 ```
+
+---
 
 </details>
 
