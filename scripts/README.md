@@ -182,10 +182,10 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
         background: certImage ? (page) => page !== 2 ? [{ image: 'cert', alignment: 'center', width: 800 }] : null : undefined,
         content: [
             { text: 'This is to certify that', fontSize: 16, alignment: 'center', margin: [0, -80] },
-            { text: CERT_NAME,                  fontSize: 36, alignment: 'center', margin: [0, 90]  },
-            { text: 'has completed',            fontSize: 16, alignment: 'center', margin: [0, -80] },
-            { text: courseTitle,                 fontSize: 24, alignment: 'center', margin: [0, 90]  },
-            { text: date,                       fontSize: 16, alignment: 'center', margin: [0, -40] },
+            { text: CERT_NAME,                 fontSize: 36, alignment: 'center', margin: [0, 90]  },
+            { text: 'has completed',           fontSize: 16, alignment: 'center', margin: [0, -80] },
+            { text: courseTitle,               fontSize: 24, alignment: 'center', margin: [0, 90]  },
+            { text: date,                      fontSize: 16, alignment: 'center', margin: [0, -40] },
         ],
         images: certImage ? { cert: certImage } : undefined,
     })[CERT_ACTION === 'print' ? 'print' : 'download'](`${courseTitle}.pdf`);
