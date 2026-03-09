@@ -132,7 +132,66 @@ The theoretical minimum is ⌈15.75 / log₂(11)⌉ = **5 probes** at maximum en
 
 - [🥇] Print certificate instantly
 ```js
-Coming soon...
+// ============================================
+// DCSA Auto Certificate PDF Generator v4.0
+// Paste in console on any course page
+// ============================================
+// CONFIG — Set your name and action below:
+const CERT_NAME   = 'John Doe';   // <-- Your name
+const CERT_ACTION = 'download';   // 'download' or 'print'
+// ============================================
+
+(async () => {
+    // Verify pdfMake is loaded
+    if (typeof pdfMake === 'undefined') {
+        console.error('[AutoCert] pdfMake not loaded. Are you inside a course?');
+        return;
+    }
+
+    // Get the course title from Storyline player or document.title
+    let courseTitle = document.title;
+    if (typeof GetPlayer === 'function') {
+        const p = GetPlayer();
+        const t = p.GetVar('SLmod03_courseTitle');
+        if (t) courseTitle = t;
+    }
+
+    // Format today's date
+    const d = new Date();
+    const date = `${['January','February','March','April','May','June','July','August','September','October','November','December'][d.getMonth()]} ${String(d.getDate()).padStart(2,'0')}, ${d.getFullYear()}`;
+
+    // Fetch the certificate background image from savePDF.js
+    const base = location.pathname.replace(/\/[^/]*$/, '');
+    let certImage = null;
+    try {
+        const r = await fetch(`${base}/story_content/external_files/savePDF.js`);
+        if (r.ok) {
+            const m = (await r.text()).match(/(data:image\/[a-z]+;base64,[A-Za-z0-9+/=]+)/);
+            if (m) certImage = m[1];
+        }
+    } catch {}
+
+    if (!certImage) console.warn('[AutoCert] No cert background found — generating without it.');
+
+    // Build and generate PDF
+    pdfMake.createPdf({
+        pageSize: 'A4',
+        pageOrientation: 'landscape',
+        pageMargins: [250, 250, 250, 50],
+        watermark: { text: 'DCSA', color: 'white', opacity: 0.1, bold: true },
+        background: certImage ? (page) => page !== 2 ? [{ image: 'cert', alignment: 'center', width: 800 }] : null : undefined,
+        content: [
+            { text: 'This is to certify that', fontSize: 16, alignment: 'center', margin: [0, -80] },
+            { text: CERT_NAME,                  fontSize: 36, alignment: 'center', margin: [0, 90]  },
+            { text: 'has completed',            fontSize: 16, alignment: 'center', margin: [0, -80] },
+            { text: courseTitle,                 fontSize: 24, alignment: 'center', margin: [0, 90]  },
+            { text: date,                       fontSize: 16, alignment: 'center', margin: [0, -40] },
+        ],
+        images: certImage ? { cert: certImage } : undefined,
+    })[CERT_ACTION === 'print' ? 'print' : 'download'](`${courseTitle}.pdf`);
+
+    console.log(`[AutoCert] ✅ Certificate generated for "${CERT_NAME}" — "${courseTitle}" — ${date}`);
+})();
 ```
 
 - [🥈] Auto answers all 20 questions for the final assessment
