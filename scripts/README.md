@@ -369,7 +369,7 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
             });
         });
         setTimeout(function() { var b = document.querySelector('[aria-label*="submit"]'); if (b) b.click(); }, 0);
-        setTimeout(function() { var b = document.querySelector('[aria-label*="continue"]'); if (b) b.click(); }, 20);
+        setTimeout(function() { var b = document.querySelector('[aria-label*="continue"]'); if (b) b.click(); }, 50);
     };
     new MutationObserver(function() { clearTimeout(t); t = setTimeout(r, 0); })
         .observe(document.getElementById('slide-window') || document.body, { childList: true, subtree: true });
