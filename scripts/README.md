@@ -133,6 +133,7 @@ The theoretical minimum is ⌈15.75 / log₂(11)⌉ = **5 probes** at maximum en
 - [🥇] Print certificate instantly
 ```js
 // =============================================
+// DCSA Universal Certificate Generator v8.0
 // Paste on any course home page (index.htm/html)
 // =============================================
 // CONFIG:
@@ -144,28 +145,10 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
     const slug = location.pathname.split('/')[1];
     if (!slug) return console.error('[AutoCert] Cannot detect course from URL.');
 
-    const title = document.querySelector('h1')?.textContent?.trim() || document.title;
+    const title = document.querySelector('h1')?.textContent?.trim() || document.title?.trim();
     console.log(`[AutoCert] Course: "${title}" (${slug})`);
 
-    // --- Discover savePDF.js and pdfMake paths ---
-    const subfolders = ['quiz', ''];
-    let basePath = null;
-
-    for (const sub of subfolders) {
-        const prefix = sub ? `/${slug}/${sub}` : `/${slug}`;
-        try {
-            const r = await fetch(`${prefix}/story_content/external_files/savePDF.js`, { method: 'HEAD' });
-            if (r.ok) { basePath = prefix; break; }
-        } catch {}
-    }
-
-    if (!basePath) {
-        console.error(`[AutoCert] No certificate found for "${title}". This course may not have one.`);
-        return;
-    }
-    console.log(`[AutoCert] Found certificate at: ${basePath}/`);
-
-    // --- Load pdfMake ---
+    // --- Helper: load a script tag ---
     const loadScript = (src) => new Promise((resolve, reject) => {
         const s = document.createElement('script');
         s.src = src;
@@ -174,50 +157,155 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
         document.head.appendChild(s);
     });
 
-    if (typeof pdfMake === 'undefined') {
-        console.log('[AutoCert] Loading pdfMake...');
-        try {
-            await loadScript(`${basePath}/story_content/external_files/pdfmake.min.js`);
-            await loadScript(`${basePath}/story_content/external_files/vfs_fonts.js`);
-        } catch {
-            console.error('[AutoCert] Failed to load pdfMake.');
-            return;
+    // --- Helper: today's date ---
+    const d = new Date();
+    const MONTHS = ['January','February','March','April','May','June',
+                    'July','August','September','October','November','December'];
+    const dateFormatted = `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+    const dateShort = `${d.getMonth()+1}/${d.getDate()}/${d.getFullYear()}`;
+
+    // ============================================================
+    // TYPE A: Storyline + pdfMake (savePDF.js with base64 image)
+    // ============================================================
+    async function tryTypeA() {
+        const subfolders = ['quiz', ''];
+        for (const sub of subfolders) {
+            const prefix = sub ? `/${slug}/${sub}` : `/${slug}`;
+            try {
+                const r = await fetch(`${prefix}/story_content/external_files/savePDF.js`, { method: 'HEAD' });
+                if (r.ok) return prefix;
+            } catch {}
         }
+        return null;
     }
 
-    // --- Fetch certificate background ---
-    let certImage = null;
-    try {
-        const r = await fetch(`${basePath}/story_content/external_files/savePDF.js`);
-        certImage = (await r.text()).match(/(data:image\/[a-z]+;base64,[A-Za-z0-9+/=]+)/)?.[1] ?? null;
-    } catch {}
+    // ============================================================
+    // TYPE B: Engine + jsPDF + Canvas (certificate.jpg)
+    // ============================================================
+    async function tryTypeB() {
+        const bases = [`/${slug}/content`, `/${slug}`];
+        for (const base of bases) {
+            try {
+                const [engR, imgR] = await Promise.all([
+                    fetch(`${base}/js/engine-2.3.1.min.js`, { method: 'HEAD' }),
+                    fetch(`${base}/img/course/certificate.jpg`, { method: 'HEAD' }),
+                ]);
+                if (engR.ok && imgR.ok) return base;
+            } catch {}
+        }
+        return null;
+    }
 
-    if (!certImage) console.warn('[AutoCert] No background image — generating without it.');
+    // ============================================================
+    // TYPE C: HTML page + URL params (certificate.html)
+    // ============================================================
+    async function tryTypeC() {
+        const paths = [`/${slug}/certificate.html`, `/${slug}/story_content/certificate.html`];
+        for (const p of paths) {
+            try {
+                const r = await fetch(p, { method: 'HEAD' });
+                if (r.ok) return p;
+            } catch {}
+        }
+        return null;
+    }
 
-    // --- Format date ---
-    const d = new Date();
-    const date = `${['January','February','March','April','May','June','July','August','September','October','November','December'][d.getMonth()]} ${String(d.getDate()).padStart(2,'0')}, ${d.getFullYear()}`;
+    // --- Try all three types ---
+    console.log('[AutoCert] Detecting certificate type...');
 
-    // --- Generate PDF ---
-    pdfMake.createPdf({
-        pageSize: 'A4',
-        pageOrientation: 'landscape',
-        pageMargins: [250, 250, 250, 50],
-        watermark: { text: 'DCSA', color: 'white', opacity: 0.1, bold: true },
-        background: certImage
-            ? (page) => page !== 2 ? [{ image: 'cert', alignment: 'center', width: 800 }] : null
-            : undefined,
-        content: [
-            { text: 'This is to certify that', fontSize: 16, alignment: 'center', margin: [0, -80] },
-            { text: CERT_NAME,                 fontSize: 36, alignment: 'center', margin: [0, 90]  },
-            { text: 'has completed',           fontSize: 16, alignment: 'center', margin: [0, -80] },
-            { text: title,                     fontSize: 24, alignment: 'center', margin: [0, 90]  },
-            { text: date,                      fontSize: 16, alignment: 'center', margin: [0, -40] },
-        ],
-        images: certImage ? { cert: certImage } : undefined,
-    })[CERT_ACTION === 'print' ? 'print' : 'download'](`${title}.pdf`);
+    const typeAPath = await tryTypeA();
+    if (typeAPath) {
+        console.log(`[AutoCert] Type A (pdfMake) detected at ${typeAPath}/`);
 
-    console.log(`[AutoCert] ✅ Certificate generated for "${CERT_NAME}" — "${title}" — ${date}`);
+        if (typeof pdfMake === 'undefined') {
+            console.log('[AutoCert] Loading pdfMake...');
+            await loadScript(`${typeAPath}/story_content/external_files/pdfmake.min.js`);
+            await loadScript(`${typeAPath}/story_content/external_files/vfs_fonts.js`);
+        }
+
+        const r = await fetch(`${typeAPath}/story_content/external_files/savePDF.js`);
+        const certImage = (await r.text()).match(/(data:image\/[a-z]+;base64,[A-Za-z0-9+/=]+)/)?.[1] ?? null;
+
+        pdfMake.createPdf({
+            pageSize: 'A4',
+            pageOrientation: 'landscape',
+            pageMargins: [250, 250, 250, 50],
+            watermark: { text: 'DCSA', color: 'white', opacity: 0.1, bold: true },
+            background: certImage ? () => [{ image: 'cert', alignment: 'center', width: 800 }] : undefined,
+            content: [
+                { text: 'This is to certify that', fontSize: 16, alignment: 'center', margin: [0, -80] },
+                { text: CERT_NAME,                  fontSize: 36, alignment: 'center', margin: [0, 90]  },
+                { text: 'has completed',            fontSize: 16, alignment: 'center', margin: [0, -80] },
+                { text: title,                      fontSize: 24, alignment: 'center', margin: [0, 90]  },
+                { text: dateFormatted,              fontSize: 16, alignment: 'center', margin: [0, -40] },
+            ],
+            images: certImage ? { cert: certImage } : undefined,
+        })[CERT_ACTION === 'print' ? 'print' : 'download'](`${title} Certificate.pdf`);
+
+        console.log(`[AutoCert] ✅ Certificate generated (Type A - pdfMake)`);
+        return;
+    }
+
+    const typeBPath = await tryTypeB();
+    if (typeBPath) {
+        console.log(`[AutoCert] Type B (jsPDF + Canvas) detected at ${typeBPath}/`);
+
+        if (typeof jsPDF === 'undefined') {
+            await loadScript(`${typeBPath}/js/libs/jspdf-1.3.2.min.js`);
+        }
+
+        // Replicate the CertificateWidget.createPDF logic
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+
+        img.onload = function() {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            ctx.textAlign = 'center';
+            ctx.font = '34px Arial';
+            ctx.fillText(CERT_NAME, img.width / 2, 347);
+            ctx.font = 'bold 12px Arial';
+            ctx.fillText(dateShort, img.width / 2, 466);
+
+            // Generate verification code (simplified from getX)
+            const names = CERT_NAME.split(' ');
+            const mn = String(d.getMonth() + 1).padStart(2, '0');
+            const dy = String(d.getDate()).padStart(2, '0');
+            const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const vc = alpha[names[0].length % 26]
+                + alpha[(alpha.indexOf(names[0][0].toUpperCase()) + names[0].length) % 26]
+                + alpha[(alpha.indexOf(names[names.length-1][0].toUpperCase()) + names[0].length) % 26]
+                + String(Math.floor(Math.random() * 99) + 1).padStart(2, '0')
+                + alpha[(Number(mn[0]) + 14 + names[names.length-1].length) % 26]
+                + mn[1]
+                + alpha[(Number(dy[0]) + 9 + names[names.length-1].length) % 26]
+                + alpha[(Number(dy[1]) + names[names.length-1].length) % 26]
+                + alpha[Math.floor(Math.random() * 26)];
+            ctx.fillText(vc, 564, 498);
+
+            const imgData = canvas.toDataURL('image/jpeg', 1);
+            const doc = new jsPDF('landscape');
+            doc.addImage(imgData, 'JPEG', 14, 6, 275, 197);
+            doc.save(`${title} Certificate.pdf`);
+            console.log(`[AutoCert] ✅ Certificate generated (Type B - jsPDF)`);
+        };
+        img.src = `${typeBPath}/img/course/certificate.jpg`;
+        return;
+    }
+
+    const typeCPath = await tryTypeC();
+    if (typeCPath) {
+        console.log(`[AutoCert] Type C (HTML certificate) detected at ${typeCPath}`);
+        const url = `${typeCPath}?name=${encodeURIComponent(CERT_NAME)}&date=${encodeURIComponent(dateFormatted)}`;
+        window.open(url, '_blank', 'width=820,height=700,menubar=no');
+        console.log(`[AutoCert] ✅ Certificate opened in new window (Type C - HTML)`);
+        return;
+    }
+
+    console.error(`[AutoCert] ❌ No certificate mechanism found for "${title}". This course may not have one, or it may use a different system.`);
 })();
 ```
 
