@@ -351,40 +351,44 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
 ```js
 (function p() {
     if (typeof DS === 'undefined') return setTimeout(p, 1e3);
-    var l = '', r = function() {
-        var el = document.querySelector('input[data-represents]');
-        if (!el) return;
-        var id = el.dataset.represents.split('.').slice(0, 4).join('.');
-        if (id === l) return;
-        var s = DS.slidesController.getSlide(id);
-        if (!s || !s.attributes.interactions) return;
-        l = id;
-        s.attributes.interactions.models[0].attributes.answers.forEach(function(a) {
-            if (a.status !== 'correct') return;
-            var ids = [];
-            a.evaluate.statements.forEach(function(s) {
-                if (s.choiceid) ids.push(s.choiceid.replace('choices.choice_', ''));
+    var l = '',
+        r = function() {
+            var el = document.querySelector('input[data-represents]');
+            if (!el) return;
+            var id = el.dataset.represents.split('.').slice(0, 4).join('.');
+            if (id === l) return;
+            var s = DS.slidesController.getSlide(id);
+            if (!s || !s.attributes.interactions) return;
+            l = id;
+            s.attributes.interactions.models[0].attributes.answers.forEach(function(a) {
+                if (a.status !== 'correct') return;
+                var ids = [];
+                a.evaluate.statements.forEach(function(s) {
+                    if (s.choiceid) ids.push(s.choiceid.replace('choices.choice_', ''));
+                });
+                (ids.length ? ids : [a.id]).forEach(function(i) {
+                    var e = document.getElementById('acc-' + i);
+                    if (e) e.click();
+                });
             });
-            (ids.length ? ids : [a.id]).forEach(function(i) {
-                var e = document.getElementById('acc-' + i);
-                if (e) e.click();
-            });
-        });
-        setTimeout(function() {
-            document.querySelectorAll('button.acc-button').forEach(function(b) {
-                if (/submit/i.test(b.textContent)) b.click();
-            });
-        }, 50);
-        setTimeout(function() {
-            var b = document.querySelector('[aria-label*="ontinue"]');
-            if (b) b.click();
-        }, 100);
-    };
+            setTimeout(function() {
+                document.querySelectorAll('button.acc-button').forEach(function(b) {
+                    if (/submit/i.test(b.textContent)) b.click();
+                });
+            }, 50);
+            setTimeout(function() {
+                var b = document.querySelector('[aria-label*="ontinue"]');
+                if (b) b.click();
+            }, 100);
+        };
     var t;
     new MutationObserver(function() {
         clearTimeout(t);
         t = setTimeout(r, 0);
-    }).observe(document.getElementById('slide-window') || document.body, { childList: true, subtree: true });
+    }).observe(document.getElementById('slide-window') || document.body, {
+        childList: true,
+        subtree: true
+    });
     r();
 })();
 ```
