@@ -131,6 +131,10 @@ The theoretical minimum is ⌈15.75 / log₂(11)⌉ = **5 probes** at maximum en
 <summary>Expand for details...</summary>
 
 - [🥇] Print certificate instantly
+
+<details>
+<summary>Expand to view...</summary>
+
 ```js
 // =============================================
 // DCSA Universal Certificate Generator v8.0
@@ -309,7 +313,18 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
 })();
 ```
 
+</details>
+
+
+
+
+
+
 - [🥈] Auto answers all final assessment questions
+
+<details>
+<summary>Expand to view...</summary>
+
 ```js
 (function p() {
     if (typeof DS === 'undefined' || !DS.slidesController) return setTimeout(p, 1000);
@@ -338,6 +353,14 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
     r();
 })();
 ```
+
+</details>
+
+
+
+
+
+
 
 ## Miscellaneous
 
