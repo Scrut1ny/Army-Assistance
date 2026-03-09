@@ -68,7 +68,7 @@ The pretest returns a percentage score (0–100%) for each submission, which map
 
 1. **Candidate Enumeration** — Generates all valid answer combinations based on detected radio button groups. Stored in a flat `Uint8Array` for cache-efficient access (~55,296 candidates, ~0.5MB).
 
-2. **Probe Pool Construction** — Builds 59 diverse probe vectors using constant fills, cyclic shifts, block patterns, hash-derived sequences, and uniform candidate samples. Empirically validated to match pools 5× larger in partition quality.
+2. **Probe Pool Construction** — Builds 59 diverse probe vectors using constant fills, cyclic shifts, block patterns, hash-derived sequences, and uniform candidate samples.
 
 3. **Greedy Probe Selection** — Iteratively selects 7 probes that maximize candidate partitioning. Uses typed-array bucket counting with tracked-index cleanup for O(N) evaluation per probe. Each probe provides ~2.2 bits of entropy; 7 probes yield 15.45 of the 15.75 bits required (log₂(55,296)).
 
@@ -92,7 +92,7 @@ The pretest returns a percentage score (0–100%) for each submission, which map
 
 ### Correctness Guarantee
 
-The no-verify optimization was validated exhaustively over all 55,296 possible answer combinations:
+Validated exhaustively over all 55,296 possible answer combinations:
 
 - **0 false positives** — a unique remaining candidate is always the true answer.
 - **0 impossible states** — the true answer is always present in the filtered set.
@@ -112,22 +112,9 @@ The theoretical minimum is ⌈15.75 / log₂(11)⌉ = **5 probes** at maximum en
 ### Usage
 
 1. Navigate to the CSF Pretest page.
-2. Open browser DevTools (`F12` ��� Console).
+2. Open browser DevTools (`F12` → Console).
 3. Paste and execute the script.
 4. The form is populated automatically — click Submit.
-
-### Optimization History
-
-| Phase | Original | Optimized | Improvement |
-|---|---|---|---|
-| Candidate storage | Array of Arrays (~7.6MB) | Flat `Uint8Array` (~0.5MB) | 15× less memory |
-| Score computation | Indexed inner loop | Unrolled 10-wide comparison | 2.5× faster |
-| Partition counting | `Map`-based bucketing | Typed-array buckets + tracked cleanup | 40× faster |
-| Probe pool | 269 probes | 59 probes (same quality) | 4.6× fewer evaluations |
-| Probe count | 6 blind + 1 verify | 7 blind, no verify | 1 fewer request |
-| Verification | Always submitted | Eliminated (proven safe) | 1 fewer request |
-| **Total compute** | **~1,726ms** | **~66ms** | **26× faster** |
-| **Total requests** | **~8.3 avg** | **~7.28 avg** | **12% fewer** |
 
 </details>
 
