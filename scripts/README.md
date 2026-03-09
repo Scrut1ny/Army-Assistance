@@ -132,65 +132,92 @@ The theoretical minimum is ⌈15.75 / log₂(11)⌉ = **5 probes** at maximum en
 
 - [🥇] Print certificate instantly
 ```js
-// ============================================
-// DCSA Auto Certificate PDF Generator v4.0
-// Paste in console on any course page
-// ============================================
-// CONFIG — Set your name and action below:
+// =============================================
+// Paste on any course home page (index.htm/html)
+// =============================================
+// CONFIG:
 const CERT_NAME   = 'John Doe';   // <-- Your name
 const CERT_ACTION = 'download';   // 'download' or 'print'
-// ============================================
+// =============================================
 
 (async () => {
-    // Verify pdfMake is loaded
-    if (typeof pdfMake === 'undefined') {
-        console.error('[AutoCert] pdfMake not loaded. Are you inside a course?');
+    const slug = location.pathname.split('/')[1];
+    if (!slug) return console.error('[AutoCert] Cannot detect course from URL.');
+
+    const title = document.querySelector('h1')?.textContent?.trim() || document.title;
+    console.log(`[AutoCert] Course: "${title}" (${slug})`);
+
+    // --- Discover savePDF.js and pdfMake paths ---
+    const subfolders = ['quiz', ''];
+    let basePath = null;
+
+    for (const sub of subfolders) {
+        const prefix = sub ? `/${slug}/${sub}` : `/${slug}`;
+        try {
+            const r = await fetch(`${prefix}/story_content/external_files/savePDF.js`, { method: 'HEAD' });
+            if (r.ok) { basePath = prefix; break; }
+        } catch {}
+    }
+
+    if (!basePath) {
+        console.error(`[AutoCert] No certificate found for "${title}". This course may not have one.`);
         return;
     }
+    console.log(`[AutoCert] Found certificate at: ${basePath}/`);
 
-    // Get the course title from Storyline player or document.title
-    let courseTitle = document.title;
-    if (typeof GetPlayer === 'function') {
-        const p = GetPlayer();
-        const t = p.GetVar('SLmod03_courseTitle');
-        if (t) courseTitle = t;
+    // --- Load pdfMake ---
+    const loadScript = (src) => new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.head.appendChild(s);
+    });
+
+    if (typeof pdfMake === 'undefined') {
+        console.log('[AutoCert] Loading pdfMake...');
+        try {
+            await loadScript(`${basePath}/story_content/external_files/pdfmake.min.js`);
+            await loadScript(`${basePath}/story_content/external_files/vfs_fonts.js`);
+        } catch {
+            console.error('[AutoCert] Failed to load pdfMake.');
+            return;
+        }
     }
 
-    // Format today's date
+    // --- Fetch certificate background ---
+    let certImage = null;
+    try {
+        const r = await fetch(`${basePath}/story_content/external_files/savePDF.js`);
+        certImage = (await r.text()).match(/(data:image\/[a-z]+;base64,[A-Za-z0-9+/=]+)/)?.[1] ?? null;
+    } catch {}
+
+    if (!certImage) console.warn('[AutoCert] No background image — generating without it.');
+
+    // --- Format date ---
     const d = new Date();
     const date = `${['January','February','March','April','May','June','July','August','September','October','November','December'][d.getMonth()]} ${String(d.getDate()).padStart(2,'0')}, ${d.getFullYear()}`;
 
-    // Fetch the certificate background image from savePDF.js
-    const base = location.pathname.replace(/\/[^/]*$/, '');
-    let certImage = null;
-    try {
-        const r = await fetch(`${base}/story_content/external_files/savePDF.js`);
-        if (r.ok) {
-            const m = (await r.text()).match(/(data:image\/[a-z]+;base64,[A-Za-z0-9+/=]+)/);
-            if (m) certImage = m[1];
-        }
-    } catch {}
-
-    if (!certImage) console.warn('[AutoCert] No cert background found — generating without it.');
-
-    // Build and generate PDF
+    // --- Generate PDF ---
     pdfMake.createPdf({
         pageSize: 'A4',
         pageOrientation: 'landscape',
         pageMargins: [250, 250, 250, 50],
         watermark: { text: 'DCSA', color: 'white', opacity: 0.1, bold: true },
-        background: certImage ? (page) => page !== 2 ? [{ image: 'cert', alignment: 'center', width: 800 }] : null : undefined,
+        background: certImage
+            ? (page) => page !== 2 ? [{ image: 'cert', alignment: 'center', width: 800 }] : null
+            : undefined,
         content: [
             { text: 'This is to certify that', fontSize: 16, alignment: 'center', margin: [0, -80] },
             { text: CERT_NAME,                 fontSize: 36, alignment: 'center', margin: [0, 90]  },
             { text: 'has completed',           fontSize: 16, alignment: 'center', margin: [0, -80] },
-            { text: courseTitle,               fontSize: 24, alignment: 'center', margin: [0, 90]  },
+            { text: title,                     fontSize: 24, alignment: 'center', margin: [0, 90]  },
             { text: date,                      fontSize: 16, alignment: 'center', margin: [0, -40] },
         ],
         images: certImage ? { cert: certImage } : undefined,
-    })[CERT_ACTION === 'print' ? 'print' : 'download'](`${courseTitle}.pdf`);
+    })[CERT_ACTION === 'print' ? 'print' : 'download'](`${title}.pdf`);
 
-    console.log(`[AutoCert] ✅ Certificate generated for "${CERT_NAME}" — "${courseTitle}" — ${date}`);
+    console.log(`[AutoCert] ✅ Certificate generated for "${CERT_NAME}" — "${title}" — ${date}`);
 })();
 ```
 
