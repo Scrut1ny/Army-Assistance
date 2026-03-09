@@ -175,7 +175,7 @@ const CERT_ACTION = 'download';   // 'download' or 'print'
     const d = new Date();
     const MONTHS = ['January','February','March','April','May','June',
                     'July','August','September','October','November','December'];
-    const dateFormatted = `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+    const dateFormatted = `${MONTHS[d.getMonth()]} ${String(d.getDate()).padStart(2, '0')}, ${d.getFullYear()}`;
     const dateShort = `${d.getMonth()+1}/${d.getDate()}/${d.getFullYear()}`;
 
     // ============================================================
