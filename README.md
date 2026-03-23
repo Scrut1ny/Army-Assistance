@@ -166,7 +166,7 @@
 
 #### Training / Learning
   - [Security Awareness Hub](https://securityawareness.usalearning.gov/index.html)
-    - Replace `/index.htm` with `/quiz/story.html` on the end of each URI; effectively bypassing all pre-training modules.
+    - Replacing `/index.htm` with `/quiz/story.html` in the URL skips to final assessment.
   - [jkodirect.jten.mil](https://jkodirect.jten.mil/Atlas2/page/desktop/DesktopHome.jsf)
   - [cs.signal.army.mil](https://cs.signal.army.mil/UserMngmt/UserPortal.asp)
   - [www.lms.army.mil](https://www.lms.army.mil/)
