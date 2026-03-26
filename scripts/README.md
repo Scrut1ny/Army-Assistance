@@ -4,6 +4,7 @@
 <summary>Expand for details... (NEW - learn.atis.army.mil)</summary>
 
 ---
+- [ATIS - Cyber Awareness Challenge](https://learn.atis.army.mil/moodle/my/courses.php/program/3244)
 
 - [🥇] Instant Completion
 ```js
