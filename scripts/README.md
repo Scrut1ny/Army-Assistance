@@ -1,7 +1,36 @@
 ## Cyber Awareness
 
 <details>
-<summary>Expand for details...</summary>
+<summary>Expand for details... (NEW - learn.atis.army.mil)</summary>
+
+---
+
+- [🥇] Instant Completion
+```js
+(() => {
+    window.parent.completed();
+    window.top.location.reload();
+})();
+```
+
+- [🥈] Auto answers all 25 questions of the "KNOWLEDGE CHECK OPTION".
+```js
+(() => {
+    const s = Alpine.$data(document.querySelector('[x-data="speedMission"]'));
+    for (const q of s?.sm?.qs || [])
+        Object.assign(s, {
+            submit: false,
+            answer: q.a[1]
+        }), s.submitSm();
+})();
+```
+
+---
+
+</details>
+
+<details>
+<summary>Expand for details... (OLD - cs.signal.army.mil)</summary>
 
 ---
 
