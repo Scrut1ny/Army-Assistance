@@ -1,9 +1,9 @@
-## Cyber Awareness
+## ATIS LEARNING
 
 <details>
 <summary>Expand for details... (NEW - learn.atis.army.mil)</summary>
 
-- [ATIS - Cyber Awareness Challenge](https://learn.atis.army.mil/moodle/my/courses.php/program/3244)
+- [ATIS Course Link](https://learn.atis.army.mil/moodle/my/courses.php/program/3244)
 
 ---
 
@@ -79,83 +79,43 @@
 
 </details>
 
-
-
-
-
-
-
-
-## Cyber Security Fundamentals (CSF)
-
 <details>
-<summary>Expand for details...</summary>
+<summary>SHARP for Annual Refresher Pretest</summary>
+
+- [ATIS Course Link](https://learn.atis.army.mil/moodle/admin/tool/supercert/quicklaunch.php?id=540)
 
 ---
 
-### Overview
-
-Automated solver for the CSF Pretest on `cs.signal.army.mil`. Determines the correct 10-question answer key by submitting strategically chosen probe answers and analyzing the returned scores. Runs entirely in the browser console — no external dependencies.
-
-### How It Works
-
-The pretest returns a percentage score (0–100%) for each submission, which maps to 0–10 correct answers. This single integer leaks enough information to identify the true answer through a series of carefully selected probes.
-
-#### Algorithm
-
-1. **Candidate Enumeration** — Generates all valid answer combinations based on detected radio button groups. Stored in a flat `Uint8Array` for cache-efficient access (~55,296 candidates, ~0.5MB).
-
-2. **Probe Pool Construction** — Builds 59 diverse probe vectors using constant fills, cyclic shifts, block patterns, hash-derived sequences, and uniform candidate samples.
-
-3. **Greedy Probe Selection** — Iteratively selects 7 probes that maximize candidate partitioning. Uses typed-array bucket counting with tracked-index cleanup for O(N) evaluation per probe. Each probe provides ~2.2 bits of entropy; 7 probes yield 15.45 of the 15.75 bits required (log₂(55,296)).
-
-4. **Parallel Submission** — All 7 probes are submitted concurrently via `fetch`. Network round-trip is the dominant cost.
-
-5. **Candidate Filtering** — Retains only candidates whose computed scores against all 7 probes match the server's responses. This yields a unique solution 74.2% of the time.
-
-6. **Disambiguation** — When 2–6 candidates remain (25.8% of cases), a single additional request resolves ambiguity. The solver selects a probe that assigns each remaining candidate a unique score — found among the candidates themselves 98.5% of the time.
-
-7. **Form Population** — The solved answer is written directly to the radio buttons. No verification request is needed — correctness is [proven exhaustively](#correctness-guarantee) across all 55,296 inputs.
-
-### Performance
-
-| Metric | Value |
-|---|---|
-| Compute time | ~66ms |
-| HTTP requests | 7–8 (avg 7.28) |
-| Total wall-clock time | ~400–800ms (network-dependent) |
-| Memory footprint | ~0.5MB |
-| Accuracy | 100% |
-
-### Correctness Guarantee
-
-Validated exhaustively over all 55,296 possible answer combinations:
-
-- **0 false positives** — a unique remaining candidate is always the true answer.
-- **0 impossible states** — the true answer is always present in the filtered set.
-- **Worst-case disambiguation** — at most 6 candidates remain, resolvable in 1 request.
-
-### Information-Theoretic Analysis
-
-| Probe | Bits Gained | Cumulative | Efficiency |
-|---|---|---|---|
-| 1–4 | ~2.55 each | 10.28 / 15.75 | 73.6% |
-| 5 | 2.30 | 12.58 / 15.75 | 66.5% |
-| 6 | 1.90 | 14.49 / 15.75 | 54.9% |
-| 7 | 0.96 | 15.45 / 15.75 | 27.7% |
-
-The theoretical minimum is ⌈15.75 / log₂(11)⌉ = **5 probes** at maximum entropy (3.46 bits each). The pool-based greedy approach achieves 98.1% coverage in 7 probes — the practical limit for non-adaptive parallel probing.
-
-### Usage
-
-1. Navigate to the CSF Pretest page.
-2. Open browser DevTools (`F12` → Console).
-3. Paste and execute the script.
-4. The form is populated automatically — click Submit.
+- [🥇] Instant Completion
+```js
+void function() {
+    var v = document.querySelector('#app').__vue__.$children[0].$children[0];
+    v.questions.forEach(function(q, i) {
+        var correctIndex = q.options.findIndex(function(o) { return o.correct === true; });
+        v.currentQuestion = i;
+        v.select(correctIndex);
+        v.next();
+    });
+    v.finish();
+}()
+```
 
 ---
 
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
