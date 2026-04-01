@@ -3,7 +3,7 @@
 <details>
 <summary>Cyber Awareness Challenge</summary>
 
-- [Cyber Awareness Challenge - ATIS Course Link](https://learn.atis.army.mil/moodle/my/courses.php/program/3244)
+- [ATIS Course Link](https://learn.atis.army.mil/moodle/my/courses.php/program/3244)
 
 ---
 
