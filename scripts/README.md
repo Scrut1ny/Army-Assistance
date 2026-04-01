@@ -3,7 +3,7 @@
 <details>
 <summary>Expand for details... (NEW - learn.atis.army.mil)</summary>
 
-- [ATIS Course Link](https://learn.atis.army.mil/moodle/my/courses.php/program/3244)
+- [Cyber Awareness Challenge - ATIS Course Link](https://learn.atis.army.mil/moodle/my/courses.php/program/3244)
 
 ---
 
