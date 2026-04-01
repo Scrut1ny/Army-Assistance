@@ -15,6 +15,24 @@
 })();
 ```
 
+- [🥈] Auto answers all 25 questions of the "KNOWLEDGE CHECK OPTION". (NEW - learn.atis.army.mil)
+```js
+(() => {
+	const {
+		Alpine,
+		document: doc
+	} = document.querySelector('iframe').contentWindow;
+	const s = Alpine.$data(doc.querySelector('[x-data="speedMission"]'));
+	for (const q of s?.sm?.qs || [])
+		Object.assign(s, {
+			submit: false,
+			answer: q.a[1]
+		}), s.submitSm();
+})();
+```
+
+---
+
 - [🥇] Skip to "Congratulations" page. (OLD - cs.signal.army.mil)
 ```js
 // https://cs.signal.army.mil/usermngmt/cyberend.asp
@@ -37,22 +55,6 @@
     if (location.pathname.includes('disacac01_01')) {
         return location.replace(location.href.replace(/disacac01_01\.html/, 'disacac18_02_army.html'));
     }
-})();
-```
-
-- [🥈] Auto answers all 25 questions of the "KNOWLEDGE CHECK OPTION". (NEW - learn.atis.army.mil)
-```js
-(() => {
-	const {
-		Alpine,
-		document: doc
-	} = document.querySelector('iframe').contentWindow;
-	const s = Alpine.$data(doc.querySelector('[x-data="speedMission"]'));
-	for (const q of s?.sm?.qs || [])
-		Object.assign(s, {
-			submit: false,
-			answer: q.a[1]
-		}), s.submitSm();
 })();
 ```
 
