@@ -18,12 +18,16 @@
 - [🥈] Auto answers all 25 questions of the "KNOWLEDGE CHECK OPTION".
 ```js
 (() => {
-    const s = Alpine.$data(document.querySelector('[x-data="speedMission"]'));
-    for (const q of s?.sm?.qs || [])
-        Object.assign(s, {
-            submit: false,
-            answer: q.a[1]
-        }), s.submitSm();
+	const {
+		Alpine,
+		document: doc
+	} = document.querySelector('iframe').contentWindow;
+	const s = Alpine.$data(doc.querySelector('[x-data="speedMission"]'));
+	for (const q of s?.sm?.qs || [])
+		Object.assign(s, {
+			submit: false,
+			answer: q.a[1]
+		}), s.submitSm();
 })();
 ```
 
