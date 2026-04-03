@@ -72,7 +72,7 @@
 
 ## Knowledge Check Option (OLD - cs.signal.army.mil)
 
-> **Note:** *Automatically selects correct answers and submits all 25 questions.*
+> **Note:** *Automatically selects correct answer(s) and submits all 25 questions.*
 
 ```js
 // https://cs.signal.army.mil/usermngmt/CyberAwareness_2026/pages/disacac01_05.html
