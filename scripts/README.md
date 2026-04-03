@@ -3,8 +3,6 @@
 <details>
 <summary>Cyber Awareness Challenge</summary>
 
-- [ATIS Course Link](https://learn.atis.army.mil/moodle/my/courses.php/program/3244)
-
 ---
 
 - [🥇] Instant Completion (NEW - learn.atis.army.mil)
@@ -93,8 +91,6 @@
 
 <details>
 <summary>SHARP for Annual Refresher Pretest</summary>
-
-- [ATIS Course Link](https://learn.atis.army.mil/moodle/admin/tool/supercert/quicklaunch.php?id=540)
 
 ---
 
