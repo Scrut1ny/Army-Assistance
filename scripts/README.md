@@ -7,10 +7,9 @@
 
 ---
 
-- Instant Completion
+## Instant Completion
 
-	> [!NOTE]
-	> Marks the activity as completed and passed, then exits and reloads the session.
+> **Note:** *Calls `completed()` on the parent window, then reloads the page.*
 
 ```js
 (() => {
@@ -19,10 +18,9 @@
 })();
 ```
 
-- Knowledge Check Option
+## Knowledge Check Option
 
-	> [!NOTE]
-  	> Automatically selects correct answers and submits all 25 questions.
+> **Note:** *Automatically selects correct answers and submits all 25 questions.*
 
 ```js
 (() => {
@@ -41,7 +39,10 @@
 
 ---
 
-- [🥇] Skip to "Congratulations" page. (OLD - cs.signal.army.mil)
+## "Congratulations" (OLD - cs.signal.army.mil)
+
+> **Note:** *Submits a POST request to load the "Congratulations" page.*
+
 ```js
 // https://cs.signal.army.mil/usermngmt/cyberend.asp
 
@@ -55,7 +56,10 @@
 })();
 ```
 
-- [🥈] Skip to "Verify Training" page. (OLD - cs.signal.army.mil)
+## "Verify Training" (OLD - cs.signal.army.mil)
+
+> **Note:** *Redirects from the start page to the "Verify Training" page.*
+
 ```js
 // https://cs.signal.army.mil/usermngmt/CyberAwareness_2026/pages/disacac18_02_army.html
 
@@ -66,7 +70,10 @@
 })();
 ```
 
-- [🥉] Auto answers all 25 questions of the "KNOWLEDGE CHECK OPTION". (OLD - cs.signal.army.mil)
+## Knowledge Check Option (OLD - cs.signal.army.mil)
+
+> **Note:** *Automatically selects correct answers and submits all 25 questions.*
+
 ```js
 // https://cs.signal.army.mil/usermngmt/CyberAwareness_2026/pages/disacac01_05.html
 
