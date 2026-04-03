@@ -8,6 +8,7 @@
 ---
 
 - Instant Completion
+
 > [!NOTE]
 > Marks the activity as completed and passed, then exits and reloads the session.
 
@@ -19,6 +20,7 @@
 ```
 
 - Knowledge Check Option
+
 > [!NOTE]
 > Automatically selects correct answers and submits all 25 questions.
 
