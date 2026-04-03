@@ -20,7 +20,7 @@
 
 ## Knowledge Check Option
 
-> **Note:** *Automatically selects correct answers and submits for all 25 questions.*
+> **Note:** *Automatically selects correct answer(s) and submits for all 25 questions.*
 
 ```js
 (() => {
