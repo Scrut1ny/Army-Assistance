@@ -9,8 +9,8 @@
 
 - Instant Completion
 
-> [!NOTE]
-> Marks the activity as completed and passed, then exits and reloads the session.
+	> [!NOTE]
+	> Marks the activity as completed and passed, then exits and reloads the session.
 
 ```js
 (() => {
@@ -21,8 +21,8 @@
 
 - Knowledge Check Option
 
-> [!NOTE]
-> Automatically selects correct answers and submits all 25 questions.
+	> [!NOTE]
+  	> Automatically selects correct answers and submits all 25 questions.
 
 ```js
 (() => {
