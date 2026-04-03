@@ -1,6 +1,5 @@
 #### General
   - [Army Links](https://armylinks.com/all-links/)
-  - [NIPRGPT](https://chat.niprgpt.mil/)
   - [AVD](https://aka.ms/AVDGov)
     - [Azure environments](https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-remote-desktop-client?tabs=web#subscribe-to-a-workspace-and-connect-to-your-desktops-and-applications)
 
@@ -64,6 +63,7 @@
   - [Joint Services Transcript (JST)](https://jst.doded.mil/jst/)
     - Make sure to utilize/send your JST transcript for college credits!
   - [Army COOL](https://www.cool.osd.mil/army/index.html)
+  - [GenAI](https://gemini.genai.mil/)
 
 ---
 
@@ -165,11 +165,11 @@
 ---
 
 #### Training / Learning
-  - [Security Awareness Hub](https://securityawareness.usalearning.gov/index.html)
-    - Replacing `/index.htm` with `/quiz/story.html` in the URL skips to final assessment.
+  - [learn.atis.army.mil](https://learn.atis.army.mil/moodle/)
   - [jkodirect.jten.mil](https://jkodirect.jten.mil/Atlas2/page/desktop/DesktopHome.jsf)
-  - [cs.signal.army.mil](https://cs.signal.army.mil/UserMngmt/UserPortal.asp)
   - [www.lms.army.mil](https://www.lms.army.mil/)
+  - [securityawareness.usalearning.gov](https://securityawareness.usalearning.gov/index.html)
+    - Replacing `/index.htm` with `/quiz/story.html` in the URL skips to final assessment.
 
 ---
 
