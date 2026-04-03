@@ -1,11 +1,15 @@
 ## ATIS LEARNING
 
+- https://learn.atis.army.mil/moodle/course/
+
 <details>
 <summary>Cyber Awareness Challenge</summary>
 
 ---
 
-- [🥇] Instant Completion (NEW - learn.atis.army.mil)
+- Instant Completion
+> [!NOTE]
+> Marks the activity as completed and passed, then exits and reloads the session.
 ```js
 (() => {
     window.parent.completed();
@@ -13,7 +17,9 @@
 })();
 ```
 
-- [🥈] Auto answers all 25 questions of the "KNOWLEDGE CHECK OPTION". (NEW - learn.atis.army.mil)
+- Knowledge Check Option
+> [!NOTE]
+> Automatically selects correct answers and submits all 25 questions.
 ```js
 (() => {
 	const {
