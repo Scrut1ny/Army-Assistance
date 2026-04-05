@@ -1,6 +1,4 @@
-## ATIS LEARNING
-
-- https://learn.atis.army.mil/moodle/course/
+## [ATIS LEARNING](https://learn.atis.army.mil/moodle/course/)
 
 <details>
 <summary>Cyber Awareness Challenge</summary>
