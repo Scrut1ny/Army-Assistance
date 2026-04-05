@@ -111,7 +111,10 @@
 
 ---
 
-- [🥇] Instant Completion
+## Pretest
+
+> **Note:** *Automatically selects correct answer(s) and submits all questions.*
+
 ```js
 void function() {
     var v = document.querySelector('#app').__vue__.$children[0].$children[0];
@@ -135,11 +138,12 @@ void function() {
 <details>
 <summary>Information Security Program Training</summary>
 
-- [ATIS Course Link](https://learn.atis.army.mil/moodle/my/courses.php/program/2704)
-
 ---
 
-- [🥇] Instant Completion
+## Final Assessment
+
+> **Note:** *Automatically selects correct answer(s) and submits for all questions.*
+
 ```js
 // ==UserScript==
 // @name         DCSA Auto Answer
