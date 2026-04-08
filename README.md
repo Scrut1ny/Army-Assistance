@@ -17,6 +17,10 @@
 #### Personal
   - [iPERMS RMA](https://iperms.hrc.army.mil/)
   - [IPPS-A](https://ipps-a.army.mil/)
+  - [Soldier Equipping & Asset Management (SEAM)](https://tacom.army.mil/seam)
+    - Missing Gear? Utilize these instead of getting a statement of charges!
+      - [Venture Surplus](https://www.venturesurplus.com/shop/)
+      - [Army Navy Outdoors](https://armynavyoutdoors.com/)
   - [ID Card Office Online](https://idco-pki.dmdc.osd.mil/idco/myprofile-info)
   - [Defense Travel System (DTS)](https://dtsproweb.defensetravel.osd.mil/dts-app/pubsite/all/view)
   - [Army Training and Certification Tracking System (ATCTS)](https://atcts.army.mil/)
