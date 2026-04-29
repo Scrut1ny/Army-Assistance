@@ -4,6 +4,22 @@
     - [Azure environments](https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-remote-desktop-client?tabs=web#subscribe-to-a-workspace-and-connect-to-your-desktops-and-applications)
     - [Register](https://militarycac.com/avd.htm)
 
+<details>
+<summary>FreeRDP (xfreerdp3) AVD</summary>
+  
+```sh
+xfreerdp3 "Army Desktop.rdpw" \
+  /cert:tofu \
+  /sec:aad \
+  /azure:tenantid:fae6d70f-954b-4811-92b6-0530d6f84c43,ad:login.microsoftonline.us,avd-scope:https://www.wvd.azure.us/.default,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient \
+  /smartcard \
+  +clipboard \
+  /audio-mode:0 \
+  /microphone
+```
+
+</details>
+
 ---
 
 #### A365 Webapps
