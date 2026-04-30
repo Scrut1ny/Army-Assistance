@@ -6,11 +6,12 @@
 
 <details>
 <summary>FreeRDP - Army AVD</summary>
-  
-```sh
-xfreerdp3 "Army Desktop.rdpw" /smartcard +clipboard /azure:ad:login.microsoftonline.us,tenantid:common,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient
-```
 
+- RDP
+```sh
+xfreerdp3 "Army Desktop.rdpw" /cert:ignore /smartcard +clipboard /azure:ad:login.microsoftonline.us,tenantid:common,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient
+```
+- Certificate Propagation?
 ```bat
 certutil -scinfo
 ```
