@@ -5,10 +5,14 @@
     - [Register](https://militarycac.com/avd.htm)
 
 <details>
-<summary>FreeRDP (xfreerdp3) AVD</summary>
+<summary>FreeRDP - Army AVD</summary>
   
 ```sh
-xfreerdp3 "Army Desktop.rdpw" /cert:ignore /smartcard +clipboard /azure:ad:login.microsoftonline.us,tenantid:common,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient
+xfreerdp3 "Army Desktop.rdpw" /smartcard +clipboard /azure:ad:login.microsoftonline.us,tenantid:common,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient
+```
+
+```bat
+certutil -scinfo
 ```
 
 </details>
