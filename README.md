@@ -8,14 +8,7 @@
 <summary>FreeRDP (xfreerdp3) AVD</summary>
   
 ```sh
-xfreerdp3 "Army Desktop.rdpw" \
-  /cert:tofu \
-  /sec:aad \
-  /azure:tenantid:XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX,ad:login.microsoftonline.us,avd-scope:https://www.wvd.azure.us/.default,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient \
-  /smartcard \
-  +clipboard \
-  /audio-mode:0 \
-  /microphone
+xfreerdp3 "Army Desktop.rdpw" /cert:ignore /smartcard /smartcard-logon +clipboard /azure:ad:login.microsoftonline.us,tenantid:common,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient
 ```
 
 </details>
