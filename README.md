@@ -8,7 +8,7 @@
 <summary>FreeRDP (xfreerdp3) AVD</summary>
   
 ```sh
-xfreerdp3 "Army Desktop.rdpw" /cert:ignore /smartcard /smartcard-logon +clipboard /azure:ad:login.microsoftonline.us,tenantid:common,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient
+xfreerdp3 "Army Desktop.rdpw" /cert:ignore /smartcard /smartcard-logon +clipboard /kerberos:pkcs11-module:/usr/lib/opensc-pkcs11.so /azure:ad:login.microsoftonline.us,tenantid:common,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient
 ```
 
 </details>
