@@ -219,7 +219,7 @@ void function() {
 
 
 
-## [JKO - Joint Knowledge Online](https://jkodirect.jten.mil/)
+## [JKO LMS](https://jkodirect.jten.mil/)
 
 
 <details>
