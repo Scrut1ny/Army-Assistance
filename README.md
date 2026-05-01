@@ -21,6 +21,7 @@ sudo pacman -S freerdp --noconfirm
 ```sh
 xfreerdp3 "Army Desktop.rdpw" /cert:ignore /smartcard +clipboard /azure:ad:login.microsoftonline.us,tenantid:common,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient
 ```
+- To obtain the `Army Desktop.rdpw` file you need to use the [Web client](https://client.wvd.azure.us/arm/webclient/index.html). Once logged in, you'll see a `⚙️` icon- select that icon and modify the *Resources Launch Method* from `Open resources in the browser` to `Download the rdp file`. Now select either the Arizona or Virginia `Army Desktop` tile/button.
 
 ## Certificate Propagation?
 ```bat
