@@ -1,5 +1,5 @@
 #### General
-- [Army Links](https://armylinks.com/all-links/)
+- [Army Links](https://armylinks.com/)
 
 ---
 
