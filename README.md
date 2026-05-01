@@ -1,17 +1,28 @@
 #### General
-  - [Army Links](https://armylinks.com/all-links/)
-  - [AVD](https://aka.ms/AVDGov)
-    - [Azure environments](https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-remote-desktop-client?tabs=web#subscribe-to-a-workspace-and-connect-to-your-desktops-and-applications)
-    - [Register](https://militarycac.com/avd.htm)
+- [Army Links](https://armylinks.com/all-links/)
+
+---
+
+#### Army AVD
+
+- [Army 365 Enterprise Azure Virtual Desktop (AVD) Onboarding](https://myaccess.microsoft.us/@armyeitaas.onmicrosoft.us#/access-packages/b0a616f3-d77c-4f2d-bbb1-5d1bb9c5d709)
+
+- [Web client (*Direct*)](https://client.wvd.azure.us/arm/webclient/index.html) or [AVD (*Redirect*)](https://aka.ms/AVDGov) | [*Azure environments*](https://learn.microsoft.com/en-us/previous-versions/remote-desktop-client/connect-windows-cloud-services?tabs=web#tabpanel_2_web)
 
 <details>
 <summary>FreeRDP - Army AVD</summary>
 
-- RDP
+## Install package
+```sh
+sudo pacman -S freerdp --noconfirm
+```
+
+## FreeRDP command
 ```sh
 xfreerdp3 "Army Desktop.rdpw" /cert:ignore /smartcard +clipboard /azure:ad:login.microsoftonline.us,tenantid:common,avd-access:https%%3A%%2F%%2Flogin.microsoftonline.com%%2Fcommon%%2Foauth2%%2Fnativeclient
 ```
-- Certificate Propagation?
+
+## Certificate Propagation?
 ```bat
 certutil -scinfo
 ```
