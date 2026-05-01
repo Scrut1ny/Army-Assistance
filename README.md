@@ -7,7 +7,7 @@
 
 - [Army 365 Enterprise Azure Virtual Desktop (AVD) Onboarding](https://myaccess.microsoft.us/@armyeitaas.onmicrosoft.us#/access-packages/b0a616f3-d77c-4f2d-bbb1-5d1bb9c5d709)
 
-- [Web client (*Direct*)](https://client.wvd.azure.us/arm/webclient/index.html) or [AVD (*Redirect*)](https://aka.ms/AVDGov) | [*Azure environments*](https://learn.microsoft.com/en-us/previous-versions/remote-desktop-client/connect-windows-cloud-services?tabs=web#tabpanel_2_web)
+- [Web client (*Direct*)](https://client.wvd.azure.us/arm/webclient/index.html) or [AVD (*Redirect*)](https://aka.ms/AVDGov) | [*Azure environments*](https://learn.microsoft.com/en-us/previous-versions/remote-desktop-client/connect-windows-cloud-services?tabs=web#tabpanel_2_web) | [*MilitaryCAC: AVD*](https://militarycac.com/avd.htm)
 
 <details>
 <summary>FreeRDP - Army AVD</summary>
